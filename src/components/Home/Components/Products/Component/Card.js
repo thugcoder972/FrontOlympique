@@ -1,27 +1,25 @@
 import styled from "styled-components";
-
-export default function Card(props) {
+import girl from "./girl6.jpeg"
+export default function Card() {
   return (
     <Wrapper>
-   <div className="card" >
-    <img src={props.image} alt="" />
+          <div className="card" >
+    <img src={girl}alt="" />
   <div class="card-body">
     <div className="row">
     <div className="col">
-    {props.title}
+    Jeans
    </div>
    <div className="col col-lg-3">
-    ${props.price}
+    $12
    </div>
     </div>
   
   </div>
   </div>
-        
     </Wrapper>
   )
 }
 const Wrapper=styled.div `
-
 width: 18rem;
 `;

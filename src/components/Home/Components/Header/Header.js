@@ -3,7 +3,8 @@ import Mode1 from "./mode1.jpg";
 import Mode2 from "./model2.jpg";
 import React, { useState, useEffect } from "react";
 import CarouselComp from "../Carousel/CarouselComp";
-import Feature from "./Feature"
+import Feature from "./Feature";
+import Product from "../Products/Product";
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -47,11 +48,77 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <Feature/>
+     
+      <Feature />
 
       <h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
+      <div className="featureCenter">
+      <CarouselComp/>
+      </div>
 
-<CarouselComp/>
+    
+      <h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
+      <div className="widthUl">
+      <ul className="ulListe">
+            <li className="m-3">
+                <a className="btn btn-dark m-2" href="">Top</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">JumSuit</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">Lingerie</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">Jeans</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">Dresses</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">Jumpers</a>
+            </li>
+            <li className="m-3">
+            <a className="btn btn-dark  m-2" href="">Leggins</a>
+            </li>
+        </ul>
+      </div>
+    
+      <div className="featureCenter">
+        <div className="container">
+        <div className="row">
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+          <div className="col">
+          <Product/>
+          </div>
+        </div>
+        </div>
+    
+  
+      </div>
     </Wrapper>
   );
 }
@@ -98,12 +165,26 @@ const Wrapper = styled.div`
 
     animation: rorateDiv 4s infinite;
   }
+  .featureCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   ul {
     list-style-type: none;
   }
   .priceDiv{
     text-align:center;
   }
+  .ulListe {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+  }
+
 
   @keyframes fly-ball {
     100% {

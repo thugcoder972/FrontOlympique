@@ -4,7 +4,7 @@ const Last_products = [
       category: "jeans",
       totalLike: "600",
       title: "Top à la mode",
-      image: "./image/easytodo.png",
+      image: "./images/girl.jpeg",
       description: "Mobile",
       price: "19",
       adresseWeb: "https://easytodo.fr/"
@@ -14,7 +14,7 @@ const Last_products = [
       category: "jeans",
       totalLike: "600",
       title: "Top à la mode",
-      image: "./image/easytodo.png",
+      image: "./images/girl2.jpeg",
       description: "Mobile",
       price: "19",
       adresseWeb: "https://easytodo.fr/"
@@ -25,50 +25,50 @@ const Last_products = [
       category: "jeans",
       totalLike: "600",
       title: "Top à la mode",
-      image: "./image/easytodo.png",
+      image: "./images/girl3.jpg",
       description: "Mobile",
       price: "19",
       adresseWeb: "https://easytodo.fr/"
     },
     {
-        id: 3,
+        id: 4,
         category: "jeans",
         totalLike: "600",
         title: "Top à la mode",
-        image: "./image/easytodo.png",
+        image: "./images/girl4.jpg",
         description: "Mobile",
         price: "19",
         adresseWeb: "https://easytodo.fr/"
       },
 
       {
-        id: 3,
+        id: 5,
         category: "jeans",
         totalLike: "600",
         title: "Top à la mode",
-        image: "./image/easytodo.png",
+        image: "./images/girl5.jpeg",
         description: "Mobile",
         price: "19",
         adresseWeb: "https://easytodo.fr/"
       },
 
       {
-        id: 3,
+        id: 6,
         category: "jeans",
         totalLike: "600",
         title: "Top à la mode",
-        image: "./image/easytodo.png",
+        image: "./images/girl6.jpeg",
         description: "Mobile",
         price: "19",
         adresseWeb: "https://easytodo.fr/"
       },
 
       {
-        id: 3,
+        id: 7,
         category: "jeans",
         totalLike: "600",
         title: "Top à la mode",
-        image: "./image/easytodo.png",
+        image: "./images/girl6.jpeg",
         description: "Mobile",
         price: "19",
         adresseWeb: "https://easytodo.fr/"
