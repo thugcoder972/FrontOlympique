@@ -37,6 +37,7 @@ export default function CarouselComp() {
                 return (
                   <Card
                     key={index}
+                    id={value.id}
                     image={value.image}
                     category={value.category}
                     price={value.price}
@@ -46,9 +47,6 @@ export default function CarouselComp() {
                   />
                 );
               })}
-        
-      
-        
       </Carousel>
     </Wrapper>
   );

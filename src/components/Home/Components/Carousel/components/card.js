@@ -1,21 +1,31 @@
 import styled from "styled-components";
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../../../../../redux/cartSlice';
 
-export default function Card(props) {
+export default function Card({id,image,category,price,title,description,adresseWeb}) {
+  const dispatch = useDispatch()
   return (
     <Wrapper>
    <div className="card" >
-    <img src={props.image} alt="" />
+    <img src={image} alt="" />
   <div class="card-body">
     <div className="row">
     <div className="col">
-    {props.title}
+    {title}
    </div>
    <div className="col col-lg-3">
-    ${props.price}
+    ${price}
    </div>
     </div>
   
   </div>
+  <button 
+        onClick={() => 
+          dispatch(addToCart({
+            id, title, image, price
+          }))
+        }>Add to Cart
+    </button>
   </div>
         
     </Wrapper>

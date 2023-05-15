@@ -5,6 +5,9 @@ import React, { useState, useEffect } from "react";
 import CarouselComp from "../Carousel/CarouselComp";
 import Feature from "./Feature";
 import Product from "../Products/Product";
+import {useNavigate} from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { ShoppingCart } from '@mui/icons-material'
 
 export default function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -18,7 +21,16 @@ export default function Header() {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart)
 
+const getTotalQuantity = () => {
+  let total = 0
+  cart.forEach(item => {
+    total += item.quantity
+  })
+  return total
+}
   return (
     <Wrapper>
       <div className={isActive ? "div_principal" : "div_principal2"}>
@@ -116,7 +128,10 @@ export default function Header() {
           </div>
         </div>
         </div>
-    
+        <div className='shopping-cart' onClick={() => navigate('/cart')}>
+        <ShoppingCart id='cartIcon'/>
+        <p>{getTotalQuantity() || 0}</p>
+      </div>
   
       </div>
     </Wrapper>
@@ -184,6 +199,60 @@ const Wrapper = styled.div`
     align-items: center;
    
   }
+  .shopping-cart {
+  background-color: black;
+  position: relative;
+  padding: 25px;
+  border-radius: 100px;
+  position: fixed;
+  bottom: 40px;
+  right: 10%;
+  z-index: 1;
+}
+
+.shopping-cart:active {
+  box-shadow: 0 4px 4px gray;
+}
+
+#cartIcon{
+  color: white;
+}
+
+.shopping-cart > p{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  padding: 4px 8px;
+  color: white;
+  border-radius: 50px;
+}
+
+@media(max-width: 768px){
+
+  .home__row > div:nth-child(3) {
+    grid-column: 1 / span 3;
+  }
+  
+  .home__row > div:nth-child(4) {
+    grid-column: span 3;
+  }
+
+  .home__row > div:nth-child(5) {
+    grid-column: 1 / span 3;
+  }
+
+  .home__row > div:nth-child(6) {
+    grid-column: span 3;
+  }
+
+}
+
+@media(max-width: 600px){
+  .home__row{
+    display: unset;
+  }
+}
 
 
   @keyframes fly-ball {
