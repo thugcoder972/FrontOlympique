@@ -188,7 +188,7 @@ const Wrapper = styled.header`
 .cart {
   background-color:white;
   position: absolute;
-  height:530px;
+  height:550px;
   top: 50px;
   right: 80px;
   z-index: 1;

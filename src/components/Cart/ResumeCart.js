@@ -1,6 +1,6 @@
 
 import styled from "styled-components";
-import Total from './Total'
+import ResumeTotal from './ResumeTotal'
 import CartItem from './CartItem'
 import { useSelector } from 'react-redux'
 
@@ -11,7 +11,7 @@ export default function ResumeCart() {
   <div className="cart">
       <div className="cart__left">
   <div>
-    <h3>Shopping Cart</h3>
+    <h5>Shopping Cart</h5>
     {cart?.map((item) => (
       <CartItem
         key={item.id}
@@ -24,7 +24,7 @@ export default function ResumeCart() {
     ))}
   </div>
      <div className="cart__rih">
-        <Total/>
+        <ResumeTotal/>
       </div>
 </div>
 

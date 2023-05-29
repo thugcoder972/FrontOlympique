@@ -8,9 +8,10 @@ export default function Cart() {
     const cart = useSelector((state) => state.cart)
   return (
     <Wrapper>
-  <div className="cart">
+  <div className="cart card">
       <div className="cart__left">
-  <div>
+  <div className="card-header row justify-content-between">
+    <div className="col-4">
     <h3>Shopping Cart</h3>
     {cart?.map((item) => (
       <CartItem
@@ -23,11 +24,17 @@ export default function Cart() {
       />
     ))}
   </div>
+ 
+  <div className="col-4 row align-items-end">
+        <Total/>
+        
+  </div>
+  
+  </div>
+ 
 </div>
 
-      <div className="cart__right">
-        <Total/>
-      </div>
+
 
     </div>
     </Wrapper>

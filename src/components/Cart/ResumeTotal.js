@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 
  
 
-export default function Total() {
+export default function ResumeTotal() {
 const cart = useSelector((state) => state.cart);
 let taxe = 20
 
@@ -22,7 +22,6 @@ const getTotal = () => {
  <div className="total ">
       <h4>Orders Sumary</h4>
       <div className="trait"></div>
-      <div className="height"></div>
 <div className="row">
       <div className="col">
         <p className="total__p">
@@ -66,7 +65,7 @@ const getTotal = () => {
       <div className="col-6 col-sm-4">
         <p className="total__p">
 
-        <strong>free shipping</strong>
+        <strong>free</strong>
         </p>
       </div>
   </div>
@@ -87,11 +86,9 @@ const getTotal = () => {
         </p>
       </div>
   </div>
-
-  <button type="button" class="btn btn-success">Proceed to checkOut</button>
     </div>
     <div className="height"></div>
-
+    
     </Wrapper>
   )
 }
@@ -110,13 +107,13 @@ const Wrapper=styled.div `
 }
 
 .total > h2{
-  font-weight: 400;
+  font-weight: 200;
 }
 .height{
   height:10px;
 }
 .total__p{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 450;
   color: rgb(72, 77, 77);
 }
