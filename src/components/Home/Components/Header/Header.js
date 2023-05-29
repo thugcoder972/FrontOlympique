@@ -49,7 +49,6 @@ const getTotalQuantity = () => {
               Add To Cart
             </button>
           </div>
-
           <div className="priceHeader ">
             <div className="priceDiv">
             From
@@ -177,9 +176,10 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     animation: rorateDiv 4s infinite;
   }
+
+ 
   .featureCenter{
     display: flex;
     justify-content: center;

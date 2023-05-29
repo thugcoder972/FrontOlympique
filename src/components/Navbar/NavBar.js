@@ -6,7 +6,11 @@ import {NavLink} from 'react-router-dom';
 import Home from "../Home/Home";
 import News from "../News/News";
 import Top from "../Top/Top";
+import ResumeCart from "../Cart/ResumeCart";
 import Category from "../Category/Category";
+import {useNavigate} from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { ShoppingCart } from '@mui/icons-material'
 
 export default function Navbar() {
   const [height, setHeight] = useState(90);
@@ -16,7 +20,8 @@ export default function Navbar() {
   const toogleUl = () => {
     setToggleMMenuMobile(!toggleMenuMobile);
   };
-
+  const navigate = useNavigate();
+  const cart = useSelector((state) => state.cart)
   const toogleMenu = () => {
     if (height == 90) {
       setHeight(250);
@@ -29,7 +34,13 @@ export default function Navbar() {
     }
   };
 
-
+  const getTotalQuantity = () => {
+    let total = 0
+    cart.forEach(item => {
+      total += item.quantity
+    })
+    return total
+  }
   useEffect(() => {
     const changeWidth = () => {
       setLargeur(window.innerWidth);
@@ -57,6 +68,15 @@ export default function Navbar() {
             <li><NavLink to ="/category"className={({isActive})=>{return isActive?"activeLink" :"noActiveLink"}}>Category</NavLink></li>           
               </ul>
             )}
+      <div className='shopping-cart' onClick={() => navigate('/cart')}>
+        <ShoppingCart id='cartIcon'/>
+        <p>{getTotalQuantity() || 0}</p>
+      </div>
+      <div className="cartVisible">
+      <ResumeCart className="cart"/>     
+      </div>
+           
+    
           </div>
 
           <AnimateHeight duration={500} height={height}>
@@ -100,6 +120,8 @@ const Wrapper = styled.header`
     justify-content: left;
     align-items: center;
   }
+  
+ 
 
   .divMenu {
     background: gray;
@@ -147,6 +169,54 @@ const Wrapper = styled.header`
    
     }
   }
+  .shopping-cart {
+  background-color: white;
+  position: relative;
+  padding: 15px;
+  border-radius: 100px;
+  width:60px;
+  left: 103%;
+  z-index: 1;
+}
+.cartVisible{
+  visibility:hidden;
+}
+.shopping-cart:hover + .cartVisible{
+  visibility:visible;
+}
+
+.cart {
+  background-color:white;
+  position: absolute;
+  height:530px;
+  top: 50px;
+  right: 80px;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+.cartVisible:hover{
+  visibility:visible;
+}
+
+
+.shopping-cart:active {
+  box-shadow: 0 4px 4px gray;
+}
+
+#cartIcon{
+  color: black;
+}
+
+.shopping-cart > p{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  padding: 0px 6px;
+  color: white;
+  border-radius: 50px;
+}
   @media screen and (max-width: 622px) {
     .burgerMenu {
       display: block;
