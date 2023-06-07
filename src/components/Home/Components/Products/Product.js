@@ -3,7 +3,6 @@ import Card from "./Component/Card"
 export default function Products() {
   return (
     <Wrapper>
-    
         <Card/>
     </Wrapper>
   )

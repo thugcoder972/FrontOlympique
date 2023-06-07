@@ -1,25 +1,55 @@
 import styled from "styled-components";
-import girl from "./girl6.jpeg"
-export default function Card() {
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../../../../../redux/cartSlice';
+
+export default function Card({id,image,category,price,title,description,adresseWeb}) {
+  const dispatch = useDispatch()
   return (
     <Wrapper>
-          <div className="card" >
-    <img src={girl}alt="" />
+   <div className="card positionrelative" >
+    <img src={image} alt="" />
   <div class="card-body">
     <div className="row">
     <div className="col">
-    Jeans
+    {title}
    </div>
    <div className="col col-lg-3">
-    $12
+    ${price}
    </div>
     </div>
   
   </div>
+  <button className="btn btn-primary p-2 m-2 activeButton"
+        onClick={() => 
+          dispatch(addToCart({
+            id, title, image, price
+          }))
+        }>Add to Cart
+    </button>
   </div>
+        
     </Wrapper>
   )
 }
 const Wrapper=styled.div `
+.positionrelative{
+  position: relative;
+}
 width: 18rem;
+.activeButton{
+  display: none;
+}
+.card:hover .activeButton{
+  display: block;
+  position: absolute;
+  transform: rotate(-180deg);
+  animation-name: in;
+   animation-duration:2s;
+   animation-iteration-count:1;
+}
+@keyframes in {
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 `;

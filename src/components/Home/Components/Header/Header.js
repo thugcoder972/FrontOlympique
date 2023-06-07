@@ -4,33 +4,39 @@ import Mode2 from "./model2.jpg";
 import React, { useState, useEffect } from "react";
 import CarouselComp from "../Carousel/CarouselComp";
 import Feature from "./Feature";
-import Product from "../Products/Product";
-import {useNavigate} from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import { ShoppingCart } from '@mui/icons-material'
+import ProductCategories from "../Products/Product_categories";
+// import Product from "../Products/Product";
+// import {useNavigate} from 'react-router-dom'
+// import { useSelector } from 'react-redux';
+// import { ShoppingCart } from '@mui/icons-material'
 
 export default function Header() {
+
   const [isActive, setIsActive] = useState(false);
+
   const changeBool = () => {
     setIsActive((isActive) => !isActive);
   };
+
   useEffect(() => {
     const interval = setInterval(() => {
       changeBool();
       console.log(isActive);
     }, 4000);
+
     return () => clearInterval(interval);
   }, []);
-  const navigate = useNavigate();
-  const cart = useSelector((state) => state.cart)
 
-const getTotalQuantity = () => {
-  let total = 0
-  cart.forEach(item => {
-    total += item.quantity
-  })
-  return total
-}
+  // const navigate = useNavigate();
+  // const cart = useSelector((state) => state.cart)
+
+// const getTotalQuantity = () => {
+//   let total = 0
+//   cart.forEach(item => {
+//     total += item.quantity
+//   })
+//   return total
+// }
   return (
     <Wrapper>
       <div className={isActive ? "div_principal" : "div_principal2"}>
@@ -67,72 +73,7 @@ const getTotalQuantity = () => {
       <CarouselComp/>
       </div>
 
-    
-      <h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
-      <div className="widthUl">
-      <ul className="ulListe">
-            <li className="m-3">
-                <a className="btn btn-dark m-2" href="">Top</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">JumSuit</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">Lingerie</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">Jeans</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">Dresses</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">Jumpers</a>
-            </li>
-            <li className="m-3">
-            <a className="btn btn-dark  m-2" href="">Leggins</a>
-            </li>
-        </ul>
-      </div>
-    
-      <div className="featureCenter">
-        <div className="container">
-        <div className="row">
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-          <div className="col">
-          <Product/>
-          </div>
-        </div>
-        </div>
-        <div className='shopping-cart' onClick={() => navigate('/cart')}>
-        <ShoppingCart id='cartIcon'/>
-        <p>{getTotalQuantity() || 0}</p>
-      </div>
-  
-      </div>
+      <ProductCategories/>
     </Wrapper>
   );
 }
@@ -180,25 +121,14 @@ const Wrapper = styled.div`
   }
 
  
-  .featureCenter{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+ 
   ul {
     list-style-type: none;
   }
   .priceDiv{
     text-align:center;
   }
-  .ulListe {
-    list-style-type: none;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-  }
+
   .shopping-cart {
   background-color: black;
   position: relative;

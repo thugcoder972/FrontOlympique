@@ -87,6 +87,7 @@ const getTotal = () => {
       </div>
   </div>
     </div>
+    <button type="button" class="btn btn-success">Proceed to checkOut</button>
     <div className="height"></div>
     
     </Wrapper>

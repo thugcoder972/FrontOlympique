@@ -6,7 +6,7 @@ export default function Card({id,image,category,price,title,description,adresseW
   const dispatch = useDispatch()
   return (
     <Wrapper>
-   <div className="card" >
+   <div className="card positionrelative" >
     <img src={image} alt="" />
   <div class="card-body">
     <div className="row">
@@ -19,7 +19,7 @@ export default function Card({id,image,category,price,title,description,adresseW
     </div>
   
   </div>
-  <button 
+  <button className="btn btn-primary p-2 m-2 activeButton"
         onClick={() => 
           dispatch(addToCart({
             id, title, image, price
@@ -32,6 +32,24 @@ export default function Card({id,image,category,price,title,description,adresseW
   )
 }
 const Wrapper=styled.div `
-
+.positionrelative{
+  position: relative;
+}
 width: 18rem;
+.activeButton{
+  display: none;
+}
+.card:hover .activeButton{
+  display: block;
+  position: absolute;
+  transform: rotate(-180deg);
+  animation-name: in;
+   animation-duration:2s;
+   animation-iteration-count:1;
+}
+@keyframes in {
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 `;
