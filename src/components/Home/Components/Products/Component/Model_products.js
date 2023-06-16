@@ -15,7 +15,7 @@ const Model_products = [
       totalLike: "600",
       title: "Top à la mode",
       image: "./images/girl2.jpeg",
-      description: "Mobile",
+      description: "Il ne faut pas grand-chose pour que cette pièce ait l'air cool sans effort. Ajoutez des bijoux tendance pour l'habiller ou enfilez des baskets pour une ambiance plus décontractée. Combinaison noire sans manches avec décolleté en V profond. Fermeture éclair latérale.",
       price: "49",
       adresseWeb: "https://easytodo.fr/"
       
