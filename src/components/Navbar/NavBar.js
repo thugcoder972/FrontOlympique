@@ -3,11 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import React, { useState, useEffect } from "react";
 import AnimateHeight from "react-animate-height";
 import {NavLink} from 'react-router-dom';
-import Home from "../Home/Home";
-import News from "../News/News";
-import Top from "../Top/Top";
 import ResumeCart from "../Cart/ResumeCart";
-import Category from "../Category/Category";
 import {useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { ShoppingCart } from '@mui/icons-material'

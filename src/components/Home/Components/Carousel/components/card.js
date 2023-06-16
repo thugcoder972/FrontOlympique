@@ -1,12 +1,21 @@
 import styled from "styled-components";
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../../../../../redux/cartSlice';
-
+import {useNavigate} from 'react-router-dom';
 export default function Card({id,image,category,price,title,description,adresseWeb}) {
   const dispatch = useDispatch()
+  const navigate = useNavigate();
   return (
     <Wrapper>
-   <div className="card positionrelative" >
+   <div className="card positionrelative"  onClick={() => navigate('/DetailsProducts', {
+   state:{ id: id,
+    image: image,
+    category: category,
+    price: price,
+    title: title,
+    description: description,
+    adresseWeb: adresseWeb
+}})}>
     <img src={image} alt="" />
   <div class="card-body">
     <div className="row">
@@ -42,7 +51,7 @@ width: 18rem;
 .card:hover .activeButton{
   display: block;
   position: absolute;
-  transform: rotate(-180deg);
+  transform: rotate(360deg);
   animation-name: in;
    animation-duration:2s;
    animation-iteration-count:1;

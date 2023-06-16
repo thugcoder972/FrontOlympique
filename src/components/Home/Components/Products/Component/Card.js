@@ -42,7 +42,7 @@ width: 18rem;
 .card:hover .activeButton{
   display: block;
   position: absolute;
-  transform: rotate(-180deg);
+  transform: rotate(360deg);
   animation-name: in;
    animation-duration:2s;
    animation-iteration-count:1;

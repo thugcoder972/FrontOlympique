@@ -51,7 +51,7 @@ export default function Product_categories() {
     <Wrapper>
 
 
-      <h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
+      <h1 className="m-4 p-4 text-center">ALL PRODUCTS  </h1>
       <div className="widthUl">
       <ul className="ulListe">
       <li className="m-3">
