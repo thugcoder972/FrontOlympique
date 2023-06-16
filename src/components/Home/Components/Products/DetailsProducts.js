@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import {addToCart} from '../../../../../redux/cartSlice';
+import {addToCart} from '../../../../redux/cartSlice';
 import { useDispatch } from 'react-redux';
 export default function DetailsProducts({route}) {
     const { state } = useLocation();
+    const dispatch = useDispatch()
     console.log(state);
   return (
 
@@ -22,9 +23,9 @@ export default function DetailsProducts({route}) {
             <p>{state.description}</p>
             <button className="btn btn-primary p-2 m-2 activeButton"
             onClick={() => 
-            dispatch(addToCart({
-                id, title, image, price
-            }))
+            dispatch(addToCart(
+                state.id, state.title, state.image, state.price
+            ))
             }>Add to Cart
             </button>
             </div>
