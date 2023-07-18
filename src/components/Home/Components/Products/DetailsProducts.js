@@ -39,7 +39,7 @@ export default function DetailsProducts({ route }) {
               className="btn btn-primary p-2 my-4 activeButton"
               onClick={() =>
                 dispatch(
-                  addToCart(state.id, state.title, state.image, state.price)
+                  addToCart(state)
                 )
               }
             >
@@ -155,26 +155,29 @@ export default function DetailsProducts({ route }) {
                     id="multiCollapseExample3"
                   >
                     <div class="card card-body cardWith">
-                      Returns Policy 
+                      Returns Policy
                       <br />
                       <br />
-                      <p>You may return your most new, unworn items
-                      within 14 days from the day you receive your package. This
-                      policy begins on the initial delivery attempt. Tags must
-                      be attached. We will not honor your return without a tag.
-                      Once we receive your package, we will inspect it and issue
-                      you an online credit (minus shipping fees.) We do not
-                      offer money back refunds.</p> 
+                      <p>
+                        You may return your most new, unworn items within 14
+                        days from the day you receive your package. This policy
+                        begins on the initial delivery attempt. Tags must be
+                        attached. We will not honor your return without a tag.
+                        Once we receive your package, we will inspect it and
+                        issue you an online credit (minus shipping fees.) We do
+                        not offer money back refunds.
+                      </p>
                       <br />
-                      ACCESSORIES, INTIMATES, AND SALE
-                      OR DISCOUNTED ITEMS ARE FINAL SALE. NO RETURNS OR EXCHANGES. 
+                      ACCESSORIES, INTIMATES, AND SALE OR DISCOUNTED ITEMS ARE
+                      FINAL SALE. NO RETURNS OR EXCHANGES.
                       <br />
-                      <p>Online orders will not be honored in store for
-                      exchange or in-store credit. Online returns will be issued
-                      an online credit.</p>
-                       For more detailed information on our
-                      return policy or terms and conditions please visit our
-                      return policy page.
+                      <p>
+                        Online orders will not be honored in store for exchange
+                        or in-store credit. Online returns will be issued an
+                        online credit.
+                      </p>
+                      For more detailed information on our return policy or
+                      terms and conditions please visit our return policy page.
                     </div>
                   </div>
                 </div>

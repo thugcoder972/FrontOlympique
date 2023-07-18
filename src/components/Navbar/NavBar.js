@@ -125,7 +125,8 @@ const Wrapper = styled.header`
     width: 70%;
   }
   .Menu {
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 60px;
     padding: 10px;
     background: #44545c;
     height: 40px;
@@ -222,17 +223,23 @@ const Wrapper = styled.header`
       display: none;
     }
 
-    /* .divMenu {
+    .shopping-cart {
 
-    height: 260px;
-  
-  
-  } */
-    /* .ulListeMobile{
-    display: block;
-  } */
+  width:60px;
+  left: 150%;
+  z-index: 1;
+}
     .Menu {
       display: block;
     }
+  }
+
+  @media screen and (max-width: 460px) {
+
+  .shopping-cart {
+  left: 190%;
+
+}
+  
   }
 `;

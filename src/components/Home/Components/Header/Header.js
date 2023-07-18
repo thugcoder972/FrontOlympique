@@ -5,10 +5,7 @@ import React, { useState, useEffect } from "react";
 import CarouselComp from "../Carousel/CarouselComp";
 import Feature from "./Feature";
 import ProductCategories from "../Products/Product_categories";
-// import Product from "../Products/Product";
-// import {useNavigate} from 'react-router-dom'
-// import { useSelector } from 'react-redux';
-// import { ShoppingCart } from '@mui/icons-material'
+
 
 export default function Header() {
 
@@ -26,17 +23,6 @@ export default function Header() {
 
     return () => clearInterval(interval);
   }, []);
-
-  // const navigate = useNavigate();
-  // const cart = useSelector((state) => state.cart)
-
-// const getTotalQuantity = () => {
-//   let total = 0
-//   cart.forEach(item => {
-//     total += item.quantity
-//   })
-//   return total
-// }
   return (
     <Wrapper>
       <div className={isActive ? "div_principal" : "div_principal2"}>
@@ -48,6 +34,7 @@ export default function Header() {
             ducimus deleniti mollitia reiciendis dolores doloribus? Sunt tempora
             enim adipisci. Delectus?Amet ducimus deleniti mollitia reiciendis
             dolores doloribus? Sunt tempora enim adipisci. Delectus?
+            <p></p>
             <button type="button" class="btn btn-info m-3">
               Discover
             </button>
@@ -68,12 +55,12 @@ export default function Header() {
      
       <Feature />
 
-      <h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
-      <div className="featureCenter">
-      <CarouselComp/>
-      </div>
+<h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
+<div className="featureCenter">
+<CarouselComp/>
+</div>
 
-      <ProductCategories/>
+<ProductCategories/>
     </Wrapper>
   );
 }
@@ -81,17 +68,22 @@ const Wrapper = styled.div`
   .div_principal {
     height: 780px;
     background: url(${Mode1});
-    background-repeat: no-repeat;
-    background-size: auto;
+   
+    background-size: cover;
+    
+    background-position: center;
+    
   }
   .div_principal2 {
     height: 780px;
     background: url(${Mode2});
-    background-repeat: no-repeat;
-    background-size: auto;
+    
+    background-size: cover;
+    
+    background-position: center;
   }
   .textHeader {
-    width: 390px;
+    width: 30%;
     /* margin-left: 30%;
     margin-right: 50%; */
     position: absolute;
@@ -100,9 +92,6 @@ const Wrapper = styled.div`
     animation: fly-ball 4s infinite;
   }
   .divHeader {
-    /* display: flex;
-
-    align-items: center; */
     position: relative;
   }
   .priceHeader {
@@ -110,7 +99,6 @@ const Wrapper = styled.div`
     top: 300px;
     right: 450px;
     background-color: blueviolet;
- 
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -120,8 +108,6 @@ const Wrapper = styled.div`
     animation: rorateDiv 4s infinite;
   }
 
- 
- 
   ul {
     list-style-type: none;
   }
@@ -158,7 +144,31 @@ const Wrapper = styled.div`
   border-radius: 50px;
 }
 
+@media(max-width: 1343px){
+  .textHeader {
+    top: 350px;
+   
+  }
+  .priceHeader {
+    top: 40px;
+  }
+}
+@media(max-width: 1088px){
+  .textHeader {
+    width: 40%;
+    right: 50%;
+    left: 50%;
+  }
+  .priceHeader {
+
+    right: 50%;
+    left: 50%;
+  }
+
+}
+
 @media(max-width: 768px){
+  
 
   .home__row > div:nth-child(3) {
     grid-column: 1 / span 3;
@@ -182,6 +192,15 @@ const Wrapper = styled.div`
   .home__row{
     display: unset;
   }
+
+  .textHeader {
+    width: 50%;
+    font-size: 10px;
+    left:30%;
+  }
+  .priceHeader {
+    left:30%;
+}
 }
 
 

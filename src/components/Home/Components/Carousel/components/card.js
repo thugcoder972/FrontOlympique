@@ -7,7 +7,8 @@ export default function Card({id,image,category,price,title,description,adresseW
   const navigate = useNavigate();
   return (
     <Wrapper>
-   <div className="card positionrelative"  onClick={() => navigate('/DetailsProducts', {
+   <div className="card positionrelative" >
+    <img src={image} alt=""  onClick={() => navigate('/DetailsProducts', {
    state:{ id: id,
     image: image,
     category: category,
@@ -15,8 +16,7 @@ export default function Card({id,image,category,price,title,description,adresseW
     title: title,
     description: description,
     adresseWeb: adresseWeb
-}})}>
-    <img src={image} alt="" />
+}})}/>
   <div class="card-body">
     <div className="row">
     <div className="col">
