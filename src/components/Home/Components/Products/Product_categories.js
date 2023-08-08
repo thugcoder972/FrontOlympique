@@ -128,15 +128,14 @@ export default function Product_categories() {
         </ul>
       </div>
       <div className="selectProduct">
-      <select className="select ">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-        <option value="4">Four</option>
-        <option value="5">Five</option>
-        <option value="6">Six</option>
-        <option value="7">Seven</option>
-        <option value="8">Eight</option>
+      <select className="select"   onClick={selectGallery}>
+        <option value="All">All</option>
+        <option value="JumpSuit">JumpSuit</option>
+        <option value="Tops">Tops</option>
+        <option value="jeans">jeans</option>
+        <option value="Dresses">Dresses</option>
+        <option value="Jumpers">Jumpers</option>
+        <option value="JumpSuit">JumpSuit</option>
       </select>
       </div>
       <div className="featureCenter">
