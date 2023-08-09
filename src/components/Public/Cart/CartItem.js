@@ -1,5 +1,5 @@
 
-import { incrementQuantity, decrementQuantity, removeItem} from '../../redux/cartSlice'
+import { incrementQuantity, decrementQuantity, removeItem} from '../../../redux/cartSlice'
 import { useDispatch } from 'react-redux'
 import styled from "styled-components";
 

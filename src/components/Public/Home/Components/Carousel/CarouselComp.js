@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "./components/card";
-import LastProduct from  "../Carousel/Last_product"
+import LastProduct from  "./Last_product"
 
 
 const responsive = {

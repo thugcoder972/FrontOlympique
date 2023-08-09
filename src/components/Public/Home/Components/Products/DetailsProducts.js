@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { addToCart } from "../../../../redux/cartSlice";
+import { addToCart } from "../../../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { HiCash } from "react-icons/hi";
 import { AiFillStar } from "react-icons/ai";

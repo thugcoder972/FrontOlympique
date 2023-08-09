@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTrail, animated } from "react-spring";
-import ModelProducts from "../Products/Component/Model_products.js";
+import ModelProducts from "./Component/Model_products.js";
 import { v4 as uuidv4 } from "uuid";
 import Card from "./Component/Card";
 import { Waypoint } from "react-waypoint";
