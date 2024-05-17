@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from './Layout'
+import Layout from '../components/Public/Layout'
 import { Routes, Route } from 'react-router-dom';
-import Home from './Home/Home';
-import News from './News/News';
-import Top from './Top/Top';
-import Category from './Category/Category';
-import Cart from './Cart/Cart';
-import DetailsProducts from './Home/Components/Products/DetailsProducts';
+import Home from '../components/Public/Home/Home';
+import News from '../components/Public/News/News';
+import Top from '../components/Public/Top/Top';
+import Category from '../components/Public/Category/Category';
+import Cart from '../components/Public/Cart/Cart';
+import DetailsProducts from '../components/Public/Home/Components/Products/DetailsProducts';
 
 export default function PublicRoute() {
   return (
