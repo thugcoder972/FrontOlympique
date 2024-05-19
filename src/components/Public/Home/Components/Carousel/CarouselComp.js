@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import { useEffect, useState } from "react";
 import { getCategories } from "./api";
 import { useNavigate } from 'react-router-dom';
+import CategoryCard from './components/CategoryCard'
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 1640 }, items: 4 },
@@ -49,11 +50,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const CategoryCard = ({ category }) => (
-  <div className="card">
-    <img src={category.image_url} alt={category.type_epreuve_sportive} style={{ width: '400px', height: '350px', objectFit: 'cover' }} />
-    <div className="card-body">
-      <h5 className="card-title">{category.type_epreuve_sportive}</h5>
-    </div>
-  </div>
-);
+// const CategoryCard = ({ category }) => (
+//   <div className="card">
+//     <img src={category.image_url} alt={category.type_epreuve_sportive} style={{ width: '400px', height: '350px', objectFit: 'cover' }} />
+//     <div className="card-body">
+//       <h5 className="card-title">{category.type_epreuve_sportive}</h5>
+//     </div>
+//   </div>
+// );

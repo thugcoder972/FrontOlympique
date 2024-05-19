@@ -7,17 +7,26 @@ import { AiFillStar } from "react-icons/ai";
 import { IoIosPaperPlane } from "react-icons/io";
 import { BiAnalyse } from "react-icons/bi";
 import { BsChevronDown } from "react-icons/bs";
+
 export default function DetailsProducts({ route }) {
   const { state } = useLocation();
   const dispatch = useDispatch();
+
+  // Fonction pour formater l'heure
+  const formatTime = (timeString) => {
+    const date = new Date(timeString);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
   console.log(state);
+
   return (
     <Wrapper>
-      <div className=" principalDetails ">
-        <div className="row ">
-          <div className="col  m-4 right ">
+      <div className="principalDetails">
+        <div className="row">
+          <div className="col m-4 right">
             <img
-              className="imageEncadrement "
+              className="imageEncadrement"
               width={530}
               src={state.image}
               alt=""
@@ -26,26 +35,12 @@ export default function DetailsProducts({ route }) {
           <div className="col center">
             <h1>{state.title}</h1>
             <h2>{state.price} $</h2>
-
-            <select
-              className="form-select form-select-sm dropddownSize my-4 "
-              aria-label=".form-select-sm example"
-            >
-              <option selected>S</option>
-              <option value="2">M</option>
-              <option value="3">L</option>
-            </select>
             <button
               className="btn btn-primary p-2 my-4 activeButton"
-              onClick={() =>
-                dispatch(
-                  addToCart(state)
-                )
-              }
+              onClick={() => dispatch(addToCart(state))}
             >
               Add to Cart
             </button>
-
             <div className="Feature">
               <div className="objectFeature">
                 <HiCash size={30} />
@@ -53,11 +48,11 @@ export default function DetailsProducts({ route }) {
               </div>
               <div className="objectFeature">
                 <AiFillStar size={30} />
-                <p>fast Shipping</p>
+                <p>Fast Shipping</p>
               </div>
               <div className="objectFeature">
                 <IoIosPaperPlane size={30} />
-                <p>fast Shipping</p>
+                <p>Fast Shipping</p>
               </div>
               <div className="objectFeature">
                 <BiAnalyse size={30} />
@@ -68,25 +63,25 @@ export default function DetailsProducts({ route }) {
             <div>
               <p>
                 <a
-                  className="btn  my-2 Collapse"
+                  className="btn my-2 Collapse"
                   data-bs-toggle="collapse"
                   href="#multiCollapseExample1"
                   role="button"
                   aria-expanded="false"
                   aria-controls="multiCollapseExample1"
                 >
-                  DETAILS
+                  NIVEAU EPREUVE
                   <BsChevronDown size={20} />
                 </a>
               </p>
-              <div class="row">
-                <div class="col">
+              <div className="row">
+                <div className="col">
                   <div
-                    class="collapse multi-collapse"
+                    className="collapse multi-collapse"
                     id="multiCollapseExample1"
                   >
-                    <div class="card card-body cardWith">
-                      <p>{state.description}</p>
+                    <div className="card card-body cardWith">
+                      <p>{state.niveauEpreuve}</p>
                     </div>
                   </div>
                 </div>
@@ -96,38 +91,28 @@ export default function DetailsProducts({ route }) {
             <div>
               <p>
                 <a
-                  className="btn  my-2 Collapse"
+                  className="btn my-2 Collapse"
                   data-bs-toggle="collapse"
                   href="#multiCollapseExample2"
                   role="button"
                   aria-expanded="false"
                   aria-controls="multiCollapseExample2"
                 >
-                  DELIVERY
+                  COMPLEXE SPORTIF
                   <BsChevronDown size={20} />
                 </a>
               </p>
-              <div class="row">
-                <div class="col">
+              <div className="row">
+                <div className="col">
                   <div
-                    class="collapse multi-collapse"
+                    className="collapse multi-collapse"
                     id="multiCollapseExample2"
                   >
-                    <div class="card card-body cardWith">
-                      USA:
-                      <br />
-                      <br />
-                      <p>Standard Shipping: 3-5 business days Express</p>
-                      <p>Shipping: 1-2 business days International: Standard</p>
-                      <br />
-                      <p>Shipping: 1-2 business days International: Standard</p>
-                      <p>
-                        Shipping: 3-5 business days Express Shipping: 1-2
-                        business
-                      </p>
-                      <br />
-                      days For detailed information on our shipping & delivery
-                      times, please visit the tab on the bottom of our web page.
+                    <div className="card card-body cardWith">
+                      <p>{state.nameComplexe}</p>
+                      <p>Adresse: {state.adressComplexe}</p>
+                      <p>HALL: {state.hallComplexe}</p>
+                      <p>Nombre de place: {state.numberPlace}</p>
                     </div>
                   </div>
                 </div>
@@ -137,7 +122,63 @@ export default function DetailsProducts({ route }) {
             <div>
               <p>
                 <a
-                  className="btn  my-2 Collapse"
+                  className="btn my-2 Collapse"
+                  data-bs-toggle="collapse"
+                  href="#multiCollapseExample4"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="multiCollapseExample1"
+                >
+                 TYPE TARIF
+                  <BsChevronDown size={20} />
+                </a>
+              </p>
+              <div className="row">
+                <div className="col">
+                  <div
+                    className="collapse multi-collapse"
+                    id="multiCollapseExample4"
+                  >
+                    <div className="card card-body cardWith">
+                      <p>{state.tarifType}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div>
+              <p>
+                <a
+                  className="btn my-2 Collapse"
+                  data-bs-toggle="collapse"
+                  href="#multiCollapseExample5"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="multiCollapseExample1"
+                >
+                  HEURE DEBUT
+                  <BsChevronDown size={20} />
+                </a>
+              </p>
+              <div className="row">
+                <div className="col">
+                  <div
+                    className="collapse multi-collapse"
+                    id="multiCollapseExample5"
+                  >
+                    <div className="card card-body cardWith">
+                      <p>{formatTime(state.heureDebut)}</p> {/* Utilisation de la fonction de formatage */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div>
+              <p>
+                <a
+                  className="btn my-2 Collapse"
                   data-bs-toggle="collapse"
                   href="#multiCollapseExample3"
                   role="button"
@@ -148,13 +189,13 @@ export default function DetailsProducts({ route }) {
                   <BsChevronDown size={20} />
                 </a>
               </p>
-              <div class="row">
-                <div class="col">
+              <div className="row">
+                <div className="col">
                   <div
-                    class="collapse multi-collapse"
+                    className="collapse multi-collapse"
                     id="multiCollapseExample3"
                   >
-                    <div class="card card-body cardWith">
+                    <div className="card card-body cardWith">
                       Returns Policy
                       <br />
                       <br />
@@ -183,7 +224,6 @@ export default function DetailsProducts({ route }) {
                 </div>
               </div>
             </div>
-
             <hr />
           </div>
         </div>
@@ -191,6 +231,7 @@ export default function DetailsProducts({ route }) {
     </Wrapper>
   );
 }
+
 const Wrapper = styled.div`
   .backg {
     background-color: black;

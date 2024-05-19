@@ -11,3 +11,9 @@ export const getTicketsByCategory = async (category) => {
     const data = await response.json();
     return data;
 };
+
+export const getTicketsByLevel = async (niveau) => {
+    const response = await fetch(`http://127.0.0.1:8000/api/epreuves/by_level/?niveau_epreuve=${niveau}`);
+    const data = await response.json();
+    return data;
+  };
