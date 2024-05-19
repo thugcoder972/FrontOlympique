@@ -7,6 +7,8 @@ import Top from '../components/Public/Top/Top';
 import Category from '../components/Public/Category/Category';
 import Cart from '../components/Public/Cart/Cart';
 import DetailsProducts from '../components/Public/Home/Components/Products/DetailsProducts';
+import CarouselComp from '../components/Public/Home/Components/Carousel/CarouselComp';
+import EpreuvesByCategory from '../components/Public/Home/Components/Carousel/EpreuvesByCategory';
 
 export default function PublicRoute() {
   return (
@@ -18,6 +20,8 @@ export default function PublicRoute() {
       <Route path='/Category' element={<Category/>} />
       <Route path='/cart' element={<Cart />}/>
       <Route path='/DetailsProducts' element={<DetailsProducts />}/>
+      <Route path="/categories" element={<CarouselComp />} />
+      <Route path="/category/:category" element={<EpreuvesByCategory />} />
     </Route>
     
     </Routes>
