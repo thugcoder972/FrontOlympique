@@ -28,24 +28,24 @@ export default function Header() {
       <div className={isActive ? "div_principal" : "div_principal2"}>
         <div className="text-light divHeader ">
           <div className="textHeader ">
-            <h4>NEW ARRIVALS</h4>
-            <h1>DENIM JACKETS</h1>
+            <h4>MAGINIFIQUE</h4>
+            <h1>LES JEUX SONT LA</h1>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
             ducimus deleniti mollitia reiciendis dolores doloribus? Sunt tempora
             enim adipisci. Delectus?Amet ducimus deleniti mollitia reiciendis
             dolores doloribus? Sunt tempora enim adipisci. Delectus?
             <p></p>
-            <button type="button" class="btn btn-info m-3">
+            {/* <button type="button" class="btn btn-info m-3">
               Discover
             </button>
             <button type="button" class="btn btn-info">
               Add To Cart
-            </button>
+            </button> */}
           </div>
           <div className="priceHeader ">
             <div className="priceDiv">
             From
-            <h1>$29</h1>
+            <h1>$30</h1>
             Shop
             </div>
           
@@ -55,7 +55,7 @@ export default function Header() {
      
       <Feature />
 
-<h1 className="m-4 p-4 text-center">LATEST PRODUCTS  </h1>
+<h1 className="m-4 p-4 text-center">CATEGORIES </h1>
 <div className="featureCenter">
 <CarouselComp/>
 </div>
@@ -90,6 +90,7 @@ const Wrapper = styled.div`
     top: 300px;
     left: 300px;
     animation: fly-ball 4s infinite;
+    color: black;
   }
   .divHeader {
     position: relative;
@@ -98,7 +99,7 @@ const Wrapper = styled.div`
     position: absolute;
     top: 300px;
     right: 450px;
-    background-color: blueviolet;
+    background-color: black;
     width: 150px;
     height: 150px;
     border-radius: 50%;

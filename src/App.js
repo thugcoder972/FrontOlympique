@@ -8,17 +8,15 @@ import Dashboard from './components/Private/Dashboard';
 import Profile from './components/Private/Profile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
 function App() {
   return (
     <AuthProvider>
     
-        <Routes>
+    <Routes>
           <Route path="/login" element={<Login />} />
-          
-          {/* Routes publiques */}
+      
           <Route path="/*" element={<PublicRoute />} />
-          
-          {/* Routes privées */}
           <Route element={<PrivateRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
