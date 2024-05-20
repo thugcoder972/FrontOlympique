@@ -50,11 +50,4 @@ const Wrapper = styled.div`
   }
 `;
 
-// const CategoryCard = ({ category }) => (
-//   <div className="card">
-//     <img src={category.image_url} alt={category.type_epreuve_sportive} style={{ width: '400px', height: '350px', objectFit: 'cover' }} />
-//     <div className="card-body">
-//       <h5 className="card-title">{category.type_epreuve_sportive}</h5>
-//     </div>
-//   </div>
-// );
+
