@@ -1,14 +1,16 @@
 import styled from "styled-components";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {jwtDecode} from 'jwt-decode';
 import AuthContext from '../../../Contexts/authContext';
+import { clearCart } from '../../../../src/redux/cartSlice'; // Import the clearCart action
+import {jwtDecode} from 'jwt-decode';
 
 export default function Total() {
   const cart = useSelector((state) => state.cart);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   let taxe = 20;
 
   const getTotal = () => {
@@ -55,8 +57,11 @@ export default function Total() {
 
         await Promise.all(promises);
 
-        // Redirection après validation
-        navigate('/confirmation');
+        // Clear the cart only after all purchases have been successfully created
+        dispatch(clearCart());
+
+        // Redirect to the confirmation page with state
+        navigate('/confirmation', { state: { cart, totalPrice: ((getTotal().totalPrice * taxe) / 100) + getTotal().totalPrice } });
       } catch (error) {
         console.error("Erreur lors de la création des achats", error);
       }

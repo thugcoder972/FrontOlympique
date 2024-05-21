@@ -1,38 +1,51 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import AuthContext from '../../../Contexts/authContext';
 
-const Login = () => {
+const Register = () => {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const { login } = useContext(AuthContext);
+  const [tel, setTel] = useState('');
+  const [type, setType] = useState('acheteur'); // valeur par défaut
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
 
-    try {
-      await login(username, password);
-      navigate('/dashboard'); // Redirige vers le tableau de bord après connexion réussie
-    } catch (error) {
-      setError('Login failed: ' + error.message);
+    const response = await fetch('http://127.0.0.1:8000/api/register/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password, tel, type }),
+    });
+
+    if (response.ok) {
+      navigate('/login');
+    } else {
+      console.error('Failed to register');
     }
   };
 
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit}>
-        <Header>Login</Header>
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+      <Form onSubmit={handleRegister}>
+        <Header>Register</Header>
         <FormField>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
+            required
+          />
+        </FormField>
+        <FormField>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
             required
           />
         </FormField>
@@ -45,10 +58,24 @@ const Login = () => {
             required
           />
         </FormField>
-        <SubmitButton type="submit">Login</SubmitButton>
-        <RegisterLink>
-          Don't have an account? <NavLink to="/register">Register</NavLink>
-        </RegisterLink>
+        <FormField>
+          <input
+            type="tel"
+            value={tel}
+            onChange={(e) => setTel(e.target.value)}
+            placeholder="Telephone"
+          />
+        </FormField>
+        <FormField>
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="acheteur">Acheteur</option>
+            <option value="autre">Autre</option>
+          </select>
+        </FormField>
+        <SubmitButton type="submit">Register</SubmitButton>
+        <LoginLink>
+          Already have an account? <NavLink to="/login">Login</NavLink>
+        </LoginLink>
       </Form>
     </Wrapper>
   );
@@ -79,15 +106,11 @@ const Header = styled.h1`
   margin-bottom: 20px;
 `;
 
-const ErrorMessage = styled.p`
-  color: #ff0000;
-  margin-bottom: 20px;
-`;
-
 const FormField = styled.div`
   margin-bottom: 20px;
 
-  input {
+  input,
+  select {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -110,7 +133,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const RegisterLink = styled.p`
+const LoginLink = styled.p`
   margin-top: 20px;
   font-size: 1em;
   color: #333;
@@ -125,4 +148,4 @@ const RegisterLink = styled.p`
   }
 `;
 
-export default Login;
+export default Register;
