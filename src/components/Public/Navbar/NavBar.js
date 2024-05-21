@@ -65,9 +65,18 @@ export default function Navbar() {
             {toggleMenuMobile && largeur < 622 && (
               <ul className="ulListeMobile">
                 <li><NavLink to="/" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Home</NavLink></li>
-                <li><NavLink to="/news" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>News</NavLink></li>
-                <li><NavLink to="/top" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Top</NavLink></li>
-                <li><NavLink to="/category" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Category</NavLink></li>
+                {user ? (
+              <>
+                <li><NavLink to="/dashboard" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Dashboard</NavLink></li>
+                <li><NavLink to="/profile" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Profile</NavLink></li>
+                <li><button onClick={logout} className="logoutButton">Logout</button></li>
+              </>
+            ) : (
+              <>
+              <li><NavLink to="/login" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Login</NavLink></li>
+              <li><NavLink to="/register" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Register</NavLink></li>
+              </>
+            )}
               </ul>
             )}
             <div className='shopping-cart' onClick={() => navigate('/cart')}>
@@ -90,9 +99,9 @@ export default function Navbar() {
         <div className=" ulMenu">
           <ul className="ulListe">
             <li><NavLink to="/" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Home</NavLink></li>
-            <li><NavLink to="/news" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>News</NavLink></li>
-            <li><NavLink to="/top" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Top</NavLink></li>
-            <li><NavLink to="/category" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Category</NavLink></li>
+            {/* <li><NavLink to="/news" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>News</NavLink></li>
+            <li><NavLink to="/top" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Top</NavLink></li> */}
+            {/* <li><NavLink to="/category" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Category</NavLink></li> */}
             {user ? (
               <>
                 <li><NavLink to="/dashboard" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Dashboard</NavLink></li>
@@ -100,7 +109,10 @@ export default function Navbar() {
                 <li><button onClick={logout} className="logoutButton">Logout</button></li>
               </>
             ) : (
+              <>
               <li><NavLink to="/login" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Login</NavLink></li>
+              <li><NavLink to="/register" className={({ isActive }) => { return isActive ? "activeLink" : "noActiveLink" }}>Register</NavLink></li>
+              </>
             )}
           </ul>
         </div>
@@ -169,7 +181,7 @@ const Wrapper = styled.header`
   }
   ul {
     & li {
-      width: 40px;
+      width: 60px;
       margin-right: 20px;
       margin-left: 20px;
      
