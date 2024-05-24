@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import AuthContext from '../../Contexts/authContext';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { QRCodeCanvas } from 'qrcode.react';
 
 const Dashboard = () => {
   const [achats, setAchats] = useState([]);
@@ -65,6 +66,11 @@ const Dashboard = () => {
         {achats.map((achat, index) => {
           const ticketDetails = getTicketDetails(achat.ticket);
           const color = colors[index % colors.length];
+          const qrCodeData = JSON.stringify({
+            ticketId: achat.ticket,
+            userId: achat.user_acheteur,
+            purchaseId: achat.id,
+          });
           return (
             <div key={index} className="achat-item" style={{ backgroundColor: color }}>
               <img src="https://cdn.pixabay.com/photo/2016/07/22/16/39/olympia-1535220_1280.png" alt="Olympic Logo" className="olympic-logo" />
@@ -75,6 +81,7 @@ const Dashboard = () => {
               <p><strong>Tarif:</strong> {ticketDetails.tarifs?.[0]?.name_tarif || 'N/A'}</p>
               <p><strong>Nombre de tickets:</strong> {achat.nombre_tickets}</p>
               <p><strong>Prix total:</strong> ${achat.prix_total}</p>
+              <QRCodeCanvas value={qrCodeData} size={128} />
             </div>
           );
         })}

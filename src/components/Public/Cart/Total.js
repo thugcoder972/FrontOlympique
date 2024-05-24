@@ -10,7 +10,7 @@ export default function Total() {
   const cart = useSelector((state) => state.cart);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Initialize useDispatch
   let taxe = 20;
 
   const getTotal = () => {
@@ -56,14 +56,20 @@ export default function Total() {
         });
 
         await Promise.all(promises);
-
-        // Clear the cart only after all purchases have been successfully created
+        console.log('Achats créés avec succès');
+        // Clear the cart
         dispatch(clearCart());
 
         // Redirect to the confirmation page with state
         navigate('/confirmation', { state: { cart, totalPrice: ((getTotal().totalPrice * taxe) / 100) + getTotal().totalPrice } });
       } catch (error) {
         console.error("Erreur lors de la création des achats", error);
+
+        // Log the error details to understand the problem
+        if (error.response) {
+          const responseText = await error.response.text();
+          console.error("Server response text:", responseText);
+        }
       }
     }
   };
@@ -96,7 +102,7 @@ export default function Total() {
           </div>
           <div className="col-6 col-sm-4">
             <p className="total__p">
-              <strong>${((getTotal().totalPrice * taxe)/100)}</strong>
+              <strong>${((getTotal().totalPrice * taxe) / 100)}</strong>
             </p>
           </div>
         </div>
@@ -126,12 +132,12 @@ export default function Total() {
           </div>
           <div className="col-6 col-sm-4">
             <p className="total__p">
-              <strong>${((getTotal().totalPrice * taxe)/100) + getTotal().totalPrice}</strong>
+              <strong>${((getTotal().totalPrice * taxe) / 100) + getTotal().totalPrice}</strong>
             </p>
           </div>
         </div>
 
-        <button type="button" class="btn btn-success" onClick={handleCheckout}>Proceed to checkOut</button>
+        <button type="button" className="btn btn-success" onClick={handleCheckout}>Proceed to checkOut</button>
       </div>
       <div className="height"></div>
     </Wrapper>
