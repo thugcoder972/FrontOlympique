@@ -32,7 +32,7 @@ export default function Total() {
         const userId = decodedToken.user_id;
 
         const promises = cart.map(item => {
-          return fetch('http://127.0.0.1:8000/api/achats/', {
+          return fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/achats/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

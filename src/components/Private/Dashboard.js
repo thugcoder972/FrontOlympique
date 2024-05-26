@@ -18,7 +18,7 @@ const Dashboard = () => {
       }
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/user-achats/', {
+        const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/user-achats/', {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
@@ -30,7 +30,7 @@ const Dashboard = () => {
         setAchats(data);
 
         const ticketIds = data.map(achat => achat.ticket).join(',');
-        const ticketResponse = await fetch(`http://127.0.0.1:8000/api/ticket-details/${ticketIds}/`, {
+        const ticketResponse = await fetch(`https://backend-strapi.online/api.jeuxolympiques.com/api/ticket-details/${ticketIds}/`, {
           headers: {
             'Authorization': `Bearer ${user.token}`
           }
