@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'https://backend-strapi.online/api.jeuxolympiques.com/api';
 
 export const getCategories = async () => {
     const response = await fetch(`${API_URL}/epreuves/categories/`);
@@ -13,7 +13,7 @@ export const getTicketsByCategory = async (category) => {
 };
 
 export const getTicketsByLevel = async (niveau) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/epreuves/by_level/?niveau_epreuve=${niveau}`);
+    const response = await fetch(`https://backend-strapi.online/api.jeuxolympiques.com/api/epreuves/by_level/?niveau_epreuve=${niveau}`);
     const data = await response.json();
     return data;
   };

@@ -28,7 +28,7 @@ export default function ResumeTotal() {
     } else {
       try {
         for (const item of cart) {
-          const response = await fetch('http://127.0.0.1:8000/api/achats/', {
+          const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/achats/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

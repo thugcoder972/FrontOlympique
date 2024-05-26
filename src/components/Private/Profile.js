@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/user-profile/', {
+        const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/user-profile/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/user-profile/', {
+      const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/user-profile/', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
