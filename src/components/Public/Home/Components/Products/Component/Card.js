@@ -10,7 +10,7 @@ export default function Card({ id, image, catetypeEpreuveg, price, title, niveau
     <div className="card positionrelative"  >
     <img src={image} alt="" onClick={() => navigate('/DetailsProducts', {
   state: { id, image, catetypeEpreuveg, price, title, niveauEpreuve, nameComplexe,adressComplexe,hallComplexe,numberPlace,heureDebut, tarifType}})}/>
-  <div class="card-body">
+  <div className="card-body">
     <div className="row">
     <div className="col">
     <div className="titleVignette">

@@ -8,10 +8,11 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.0",
     "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^13.5.0",
     "@zxing/library": "^0.21.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.2.3",
     "jwt-decode": "^4.0.0",
     "qrcode.react": "^3.1.0",
@@ -40,6 +41,13 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js"
+    ],
+    "coverageReporters": ["html", "text"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -59,6 +67,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "@testing-library/react-hooks": "^8.0.1",
+    "gh-pages": "^6.1.1",
+    "jest": "^29.7.0",
+    "redux-mock-store": "^1.5.4"
   }
 }
