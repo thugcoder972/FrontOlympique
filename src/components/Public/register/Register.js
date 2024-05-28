@@ -16,7 +16,10 @@ const Register = () => {
 
     const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/register/', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({ username, email, password, tel, type }),
     });
 
