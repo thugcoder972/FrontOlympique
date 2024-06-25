@@ -1,60 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react';
-import AuthContext from '../../Contexts/authContext';
-import { useNavigate } from 'react-router-dom';
+// components/Dashboard.js
+import React from 'react';
 import styled from 'styled-components';
 import { QRCodeCanvas } from 'qrcode.react';
+import { useDashboardViewModel } from '../../viewmodels/DashboardViewModel';
 
 const Dashboard = () => {
-  const [achats, setAchats] = useState([]);
-  const [tickets, setTickets] = useState([]);
-  const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { achats, loading, getTicketDetails, colors } = useDashboardViewModel();
 
-  useEffect(() => {
-    const fetchAchats = async () => {
-      if (!user) {
-        navigate('/login');
-        return;
-      }
-
-      try {
-        const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/user-achats/', {
-          headers: {
-            'Authorization': `Bearer ${user.token}`
-          }
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch purchases');
-        }
-        const data = await response.json();
-        setAchats(data);
-
-        const ticketIds = data.map(achat => achat.ticket).join(',');
-        const ticketResponse = await fetch(`https://backend-strapi.online/api.jeuxolympiques.com/api/ticket-details/${ticketIds}/`, {
-          headers: {
-            'Authorization': `Bearer ${user.token}`
-          }
-        });
-        if (!ticketResponse.ok) {
-          throw new Error('Failed to fetch ticket details');
-        }
-        const ticketData = await ticketResponse.json();
-        setTickets(ticketData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchAchats();
-  }, [user, navigate]);
-
-  const getTicketDetails = (ticketId) => {
-    return tickets.find(ticket => ticket.id === ticketId) || {};
-  };
-
-  const colors = ['#FFB6C1', '#ADD8E6', '#90EE90', '#FFA07A', '#D3D3D3', '#FFD700'];
-
-  if (!user) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 

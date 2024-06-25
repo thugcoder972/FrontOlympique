@@ -15,6 +15,8 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.2.3",
     "jwt-decode": "^4.0.0",
+    "mobx": "^6.12.4",
+    "mobx-react-lite": "^4.0.7",
     "qrcode.react": "^3.1.0",
     "react": "^18.2.0",
     "react-animate-height": "^3.1.0",
@@ -46,7 +48,10 @@
       "src/**/*.{js,jsx}",
       "!src/index.js"
     ],
-    "coverageReporters": ["html", "text"]
+    "coverageReporters": [
+      "html",
+      "text"
+    ]
   },
   "eslintConfig": {
     "extends": [
