@@ -1,12 +1,16 @@
+// src/components/Carousel/views/components/CategoryCard.js
+
 import React from 'react';
 import styled from 'styled-components';
 
 const CategoryCard = ({ category }) => (
   <Card>
     <img src={category.image_url} alt={category.type_epreuve_sportive} />
-    <CardTitle>  <div className="card-body">
-     {category.type_epreuve_sportive}
-    </div></CardTitle>
+    <CardTitle>
+      <div className="card-body">
+        {category.type_epreuve_sportive}
+      </div>
+    </CardTitle>
   </Card>
 );
 

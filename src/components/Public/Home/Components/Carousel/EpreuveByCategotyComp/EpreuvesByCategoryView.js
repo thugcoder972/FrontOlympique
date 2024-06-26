@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getTicketsByCategory } from './api';
-import Card from '../Carousel/components/card';
-import styled from 'styled-components';
+// src/components/Carousel/views/EpreuvesByCategoryView.js
 
-const EpreuvesByCategory = () => {
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Card from '../components/card';
+import styled from 'styled-components';
+import { observer } from "mobx-react-lite";
+import { useDependencies } from '../../../../../../DependencyContext';
+
+const EpreuvesByCategoryView = observer(() => {
   const { category } = useParams();
-  const [tickets, setTickets] = useState([]);
+  const { epreuvesByCategoryViewModel } = useDependencies();
 
   useEffect(() => {
-    const fetchTickets = async () => {
-      const data = await getTicketsByCategory(category);
-      setTickets(data);
-    };
+    epreuvesByCategoryViewModel.loadTickets(category);
+  }, [category, epreuvesByCategoryViewModel]);
 
-    fetchTickets();
-  }, [category]);
+  if (epreuvesByCategoryViewModel.loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Wrapper>
       <h1>{category}</h1>
       <div className="tickets-list">
-        {tickets.map(ticket => (
+        {epreuvesByCategoryViewModel.tickets.map(ticket => (
           <Card
             key={ticket.id}
             id={ticket.id}
             image={ticket.epreuve_sportive.image_url}
-            catetypeEpreuveg={ticket.epreuve_sportive.type_epreuve_sportive}
+            typeEpreuve={ticket.epreuve_sportive.type_epreuve_sportive}
             title={ticket.epreuve_sportive.name_epreuve_sportive}
             niveauEpreuve={ticket.epreuve_sportive.niveau_epreuve}
             nameComplexe={ticket.complexe_sportif.name_complexe}
@@ -41,7 +43,7 @@ const EpreuvesByCategory = () => {
       </div>
     </Wrapper>
   );
-};
+});
 
 const Wrapper = styled.div`
   .tickets-list {
@@ -57,4 +59,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default EpreuvesByCategory;
+export default EpreuvesByCategoryView;

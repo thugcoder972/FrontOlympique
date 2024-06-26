@@ -1,3 +1,6 @@
+// src/components/Carousel/views/components/Card.js
+
+import React from 'react';
 import styled from "styled-components";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../../../redux/cartSlice';
@@ -21,8 +24,8 @@ export default function Card({ id, image, catetypeEpreuveg, price, title, niveau
               </div>
             </div>
             <div className="col col-lg-3">
-            <div className="titleVignette">
-              ${price}({tarifType})
+              <div className="titleVignette">
+                ${price} ({tarifType})
               </div>
             </div>
           </div>
@@ -40,14 +43,14 @@ export default function Card({ id, image, catetypeEpreuveg, price, title, niveau
 }
 
 const Wrapper = styled.div`
-  .positionrelative{
+  .positionrelative {
     position: relative;
   }
   width: 30rem;
-  .activeButton{
+  .activeButton {
     display: none;
   }
-  .titleVignette{ 
+  .titleVignette {
     font-size: 12px;
     padding: 5px 10px;
     border: 2px solid red;
@@ -55,7 +58,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     color: blue;
   }
-  .card:hover .activeButton{
+  .card:hover .activeButton {
     display: block;
     position: absolute;
     transform: rotate(360deg);

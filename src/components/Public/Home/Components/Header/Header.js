@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Mode1 from "./mode1.jpg";
 import Mode2 from "./model2.jpg";
 import React, { useState, useEffect } from "react";
-import CarouselComp from "../Carousel/CarouselComp";
+import CarouselComp from "../Carousel/CarouselComp/CarouselView";
 import Feature from "./Feature";
 import ProductCategories from "../Products/Product_categories";
 
