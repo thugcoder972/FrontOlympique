@@ -31,7 +31,8 @@ const DashboardView = observer(() => {
       <SectionTitle>Tickets achetés</SectionTitle>
       <div className="achats-list">
         {dashboardViewModel.achats.map((achat, index) => {
-          const ticketDetails = dashboardViewModel.getTicketDetails(achat.ticket);
+          const ticketDetails = dashboardViewModel.getTicketDetails(achat.id.ticket);
+          console.log("ticketDetails", ticketDetails);
           const color = colors[index % colors.length];
           const qrCodeData = JSON.stringify({
             ticketId: achat.ticket,
@@ -46,8 +47,8 @@ const DashboardView = observer(() => {
               <p><strong>Niveau:</strong> {ticketDetails.epreuve_sportive?.niveau_epreuve || 'N/A'}</p>
               <p><strong>Complexe:</strong> {ticketDetails.complexe_sportif?.name_complexe || 'N/A'}</p>
               <p><strong>Tarif:</strong> {ticketDetails.tarifs?.[0]?.name_tarif || 'N/A'}</p>
-              <p><strong>Nombre de tickets:</strong> {achat.nombre_tickets}</p>
-              <p><strong>Prix total:</strong> ${achat.prix_total}</p>
+              <p><strong>Nombre de tickets:</strong> {achat.id.nombre_tickets}</p>
+              <p><strong>Prix total:</strong> ${achat.id.prix_total}</p>
               <QRCodeCanvas value={qrCodeData} size={128} />
             </div>
           );

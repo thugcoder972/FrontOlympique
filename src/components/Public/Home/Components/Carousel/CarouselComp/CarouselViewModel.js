@@ -1,26 +1,33 @@
 // src/components/Carousel/viewmodels/CarouselViewModel.js
 
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
+import { getCategories } from '../carouselApi';
+import CategoryModel from '../../../../../../models/CategoryModel';
 
 class CarouselViewModel {
-    categories = [];
-    loading = true;
-    getCategories;
+  categories = [];
+  loading = true;
 
-    constructor(getCategories) {
-        makeAutoObservable(this);
-        this.getCategories = getCategories;
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    async loadCategories() {
-        try {
-            this.categories = await this.getCategories();
-        } catch (error) {
-            console.error('Failed to load categories:', error);
-        } finally {
-            this.loading = false;
-        }
+  async loadCategories() {
+    try {
+      const categoriesData = await getCategories();
+      const categories = categoriesData.map(category => new CategoryModel(category));
+
+      runInAction(() => {
+        this.categories = categories;
+        this.loading = false;
+      });
+    } catch (error) {
+      console.error('Failed to load categories:', error);
+      runInAction(() => {
+        this.loading = false;
+      });
     }
+  }
 }
 
 export default CarouselViewModel;

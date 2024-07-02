@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import React, { useState, useEffect, useContext } from "react";
 import AnimateHeight from "react-animate-height";
 import { NavLink } from 'react-router-dom';
-import ResumeCart from "../../../components/Public/Cart/ResumeCart";
+import ResumeCart from "../../../components/Public/Cart/ResumeTotal/ResumeCartView";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ShoppingCart } from '@mui/icons-material';

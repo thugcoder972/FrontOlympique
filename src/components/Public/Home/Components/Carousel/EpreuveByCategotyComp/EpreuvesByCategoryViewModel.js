@@ -1,26 +1,29 @@
 // src/components/Carousel/viewmodels/EpreuvesByCategoryViewModel.js
 
 import { makeAutoObservable } from "mobx";
+import { getTicketsByCategory } from '../carouselApi';
+import { Ticket } from '../../../../../../models/TicketModel';
+
 
 class EpreuvesByCategoryViewModel {
-    tickets = [];
-    loading = true;
-    getTicketsByCategory;
+  tickets = [];
+  loading = true;
 
-    constructor(getTicketsByCategory) {
-        makeAutoObservable(this);
-        this.getTicketsByCategory = getTicketsByCategory;
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    async loadTickets(category) {
-        try {
-            this.tickets = await this.getTicketsByCategory(category);
-        } catch (error) {
-            console.error('Failed to load tickets:', error);
-        } finally {
-            this.loading = false;
-        }
+  async loadTickets(category) {
+    try {
+      const ticketsData = await getTicketsByCategory(category);
+      console.log('Received tickets data:', ticketsData);  // Log des données reçues
+      this.tickets = Array.isArray(ticketsData) ? ticketsData.map(ticketData => new Ticket(ticketData)) : [];
+    } catch (error) {
+      console.error('Failed to load tickets:', error);
+    } finally {
+      this.loading = false;
     }
+  }
 }
 
 export default EpreuvesByCategoryViewModel;
