@@ -3,8 +3,9 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Confirmation = () => {
-  const { state } = useLocation();
-  const { cart, totalPrice } = state;
+  const location = useLocation();
+  const state = location.state || {}; // Ajouter une vérification de l'état
+  const { cart = [], totalPrice = 0 } = state;
 
   return (
     <Wrapper>

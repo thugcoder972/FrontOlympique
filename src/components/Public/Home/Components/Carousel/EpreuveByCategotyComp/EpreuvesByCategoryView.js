@@ -1,4 +1,4 @@
-// src/components/Carousel/views/EpreuvesByCategoryView.js
+// src/components/Public/Home/Components/Carousel/EpreuvesByCategory.js
 
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { observer } from "mobx-react-lite";
 import { useDependencies } from '../../../../../../DependencyContext';
 
-const EpreuvesByCategoryView = observer(() => {
+const EpreuvesByCategory = observer(() => {
   const { category } = useParams();
   const { epreuvesByCategoryViewModel } = useDependencies();
 
@@ -17,6 +17,10 @@ const EpreuvesByCategoryView = observer(() => {
 
   if (epreuvesByCategoryViewModel.loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!Array.isArray(epreuvesByCategoryViewModel.tickets)) {
+    return <div>Error: Tickets data is not an array</div>;
   }
 
   return (
@@ -59,4 +63,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default EpreuvesByCategoryView;
+export default EpreuvesByCategory;

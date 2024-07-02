@@ -4,13 +4,13 @@ import React from 'react';
 import Layout from '../components/Public/Layout';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../components/Public/Home/Home';
-import Cart from '../components/Public/Cart/Cart';
+import Cart from '../components/Public/Cart/Total/CartView';
 import DetailsProducts from '../components/Public/Home/Components/Products/DetailsProducts';
 import CarouselComp from '../components/Public/Home/Components/Carousel/CarouselComp/CarouselView';
 import EpreuvesByCategory from '../components/Public/Home/Components//Carousel/EpreuveByCategotyComp/EpreuvesByCategoryView';
 import Confirmation from '../components/Public/Cart/Confirmation';
-import Login from '../components/Public/Login/Login';
-import Register from '../components/Public/register/Register';
+import Login from '../components/Public/Login/LoginView';
+import Register from '../components/Public/register/registerView';
 
 export default function PublicRoute() {
   return (

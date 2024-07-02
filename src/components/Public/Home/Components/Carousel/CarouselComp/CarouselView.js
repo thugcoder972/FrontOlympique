@@ -1,5 +1,3 @@
-// src/components/Carousel/views/CarouselView.js
-
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -16,7 +14,7 @@ const responsive = {
   mobile: { breakpoint: { max: 657, min: 0 }, items: 1 }
 };
 
-const CarouselView = observer(() => {
+const CarouselComp = observer(() => {
   const { carouselViewModel } = useDependencies();
   const navigate = useNavigate();
 
@@ -52,4 +50,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default CarouselView;
+export default CarouselComp;

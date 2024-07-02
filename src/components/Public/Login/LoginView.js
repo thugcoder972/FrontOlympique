@@ -1,54 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import AuthContext from '../../../Contexts/authContext';
 
-const Register = () => {
+const LoginView = () => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [tel, setTel] = useState('');
-  const [type, setType] = useState('acheteur'); // valeur par défaut
-
+  const [error, setError] = useState('');
+  const { user, login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
-    const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password, tel, type }),
-    });
-
-    if (response.ok) {
-      navigate('/login');
-    } else {
-      console.error('Failed to register');
+    try {
+      await login(username, password);
+    } catch (error) {
+      setError('Login failed: ' + error.message);
     }
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
+
   return (
     <Wrapper>
-      <Form onSubmit={handleRegister}>
-        <Header>Register</Header>
+      <Form onSubmit={handleSubmit}>
+        <Header>Login</Header>
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <FormField>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
-            required
-          />
-        </FormField>
-        <FormField>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
             required
           />
         </FormField>
@@ -61,24 +50,10 @@ const Register = () => {
             required
           />
         </FormField>
-        <FormField>
-          <input
-            type="tel"
-            value={tel}
-            onChange={(e) => setTel(e.target.value)}
-            placeholder="Telephone"
-          />
-        </FormField>
-        <FormField>
-          <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="acheteur">Acheteur</option>
-            <option value="autre">Autre</option>
-          </select>
-        </FormField>
-        <SubmitButton type="submit">Register</SubmitButton>
-        <LoginLink>
-          Already have an account? <NavLink to="/login">Login</NavLink>
-        </LoginLink>
+        <SubmitButton type="submit">Login</SubmitButton>
+        <RegisterLink>
+          Don't have an account? <NavLink to="/register">Register</NavLink>
+        </RegisterLink>
       </Form>
     </Wrapper>
   );
@@ -109,11 +84,15 @@ const Header = styled.h1`
   margin-bottom: 20px;
 `;
 
+const ErrorMessage = styled.p`
+  color: #ff0000;
+  margin-bottom: 20px;
+`;
+
 const FormField = styled.div`
   margin-bottom: 20px;
 
-  input,
-  select {
+  input {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -136,7 +115,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const LoginLink = styled.p`
+const RegisterLink = styled.p`
   margin-top: 20px;
   font-size: 1em;
   color: #333;
@@ -151,4 +130,4 @@ const LoginLink = styled.p`
   }
 `;
 
-export default Register;
+export default LoginView;
