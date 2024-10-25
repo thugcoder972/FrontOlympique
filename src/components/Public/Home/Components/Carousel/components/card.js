@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../../../redux/cartSlice';
 import { useNavigate } from 'react-router-dom';
 
-export default function Card({ id, image, catetypeEpreuveg,title, niveauEpreuve, hallComplexe }) {
+export default function Card({ id, image, catetypeEpreuveg,title, niveauEpreuve, hallComplexe ,price}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ export default function Card({ id, image, catetypeEpreuveg,title, niveauEpreuve,
     <Wrapper>
       <div className="card positionrelative">
         <img src={image} alt={title} onClick={() => navigate('/DetailsProducts', {
-          state: { id, image, catetypeEpreuveg,title, niveauEpreuve,hallComplexe }
+          state: { id, image, catetypeEpreuveg,title, niveauEpreuve,hallComplexe,price }
         })} />
         <div className="card-body">
           <div className="row">
@@ -25,12 +25,18 @@ export default function Card({ id, image, catetypeEpreuveg,title, niveauEpreuve,
             </div>
             <div className="col col-lg-3">
               <div className="titleVignette">
-  
+              ${price} 
               </div>
             </div>
           </div>
         </div>
-       
+        <button className="btn btn-primary p-2 m-2 activeButton"
+          onClick={() =>
+            dispatch(addToCart({
+              id, title, image, price
+            }))
+          }>Add to Cart
+        </button>
       </div>
     </Wrapper>
   );

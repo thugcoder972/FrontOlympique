@@ -29,6 +29,7 @@ class EpreuvesByCategoryViewModel {
           typeEpreuveSportive: ticketData.typeEpreuveSportive || "Type inconnu",
           niveauEpreuve: ticketData.niveauEpreuve || "Niveau inconnu",
           hall: ticketData.hall || "Lieu inconnu",
+          ticketPrice: ticketData.ticketPrice || 0,  // Assuming ticketPrice is a number  
           // Ajoutez d'autres champs si nécessaire
         }));
       } else {

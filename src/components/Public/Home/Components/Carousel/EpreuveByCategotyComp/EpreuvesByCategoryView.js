@@ -29,7 +29,7 @@ const EpreuvesByCategory = observer(() => {
       <div className="tickets-list">
       {epreuvesByCategoryViewModel.tickets.map((ticket, index) => {
   // Vérifiez que toutes les propriétés du ticket sont bien définies
-  if (!ticket || !ticket.id || !ticket.imageUrl || !ticket.nameEpreuveSportive || !ticket.typeEpreuveSportive || !ticket.niveauEpreuve || !ticket.hall) {
+  if (!ticket || !ticket.id || !ticket.imageUrl || !ticket.nameEpreuveSportive || !ticket.typeEpreuveSportive || !ticket.niveauEpreuve || !ticket.hall || !ticket.ticketPrice) {
     console.error(`Ticket ${index} is invalid:`, ticket);
     return null; // Ne pas afficher ce ticket s'il manque des données
   }
@@ -43,6 +43,7 @@ const EpreuvesByCategory = observer(() => {
       title={ticket.nameEpreuveSportive}
       niveauEpreuve={ticket.niveauEpreuve}
       hallComplexe={ticket.hall}
+      price={ticket.ticketPrice}  // Assuming ticketPrice is a number
     />
   );
 })}
