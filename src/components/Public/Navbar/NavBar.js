@@ -91,7 +91,7 @@ export default function Navbar() {
           <AnimateHeight duration={500} height={height}>
             <div className="Menu" onClick={toogleMenu}>
               <span className="spanMenu">Menu</span>
-              <RxHamburgerMenu />
+              <RxHamburgerMenu color="white"/>
             </div>
           </AnimateHeight>
         </div>
@@ -124,7 +124,7 @@ export default function Navbar() {
 const Wrapper = styled.header`
   width: 100%;
   height: 140px;
-  background: #44545c;
+  background: black;
 
   .burgerMenu {
   }
@@ -135,7 +135,7 @@ const Wrapper = styled.header`
   }
   .ulListe {
     list-style-type: none;
-    background: #44545c;
+    background: black;
     height: 100%;
     display: flex;
     justify-content: left;
@@ -145,7 +145,7 @@ const Wrapper = styled.header`
  
 
   .divMenu {
-    background: gray;
+    background: black;
     /* height: 60px; */
     width: 70%;
   }
@@ -153,7 +153,7 @@ const Wrapper = styled.header`
     margin-top: 10px;
     margin-right: 60px;
     padding: 10px;
-    background: #44545c;
+    background: black;
     height: 40px;
     display: none;
   }
@@ -161,6 +161,7 @@ const Wrapper = styled.header`
     background-color: black;
   }
   .spanMenu {
+  color: white;
     padding: 5px;
   }
   .ulMenu {

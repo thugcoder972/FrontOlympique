@@ -29,10 +29,10 @@ const Card = styled.div`
 
 const CardTitle = styled.h5`
   padding: 5px 10px;
-  border: 2px solid red;
+  border:1px solid black;
   display: inline-block;
   border-radius: 5px;
-  color: blue;
+  color: black;
 `;
 
 export default CategoryCard;

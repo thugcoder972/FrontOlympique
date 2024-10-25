@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../../../redux/cartSlice';
 import { useNavigate } from 'react-router-dom';
 
-export default function Card({ id, image, catetypeEpreuveg, price, title, niveauEpreuve, nameComplexe, adressComplexe, hallComplexe, numberPlace, heureDebut, tarifType }) {
+export default function Card({ id, image, catetypeEpreuveg,title, niveauEpreuve, hallComplexe }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ export default function Card({ id, image, catetypeEpreuveg, price, title, niveau
     <Wrapper>
       <div className="card positionrelative">
         <img src={image} alt={title} onClick={() => navigate('/DetailsProducts', {
-          state: { id, image, catetypeEpreuveg, price, title, niveauEpreuve, nameComplexe, adressComplexe, hallComplexe, numberPlace, heureDebut, tarifType }
+          state: { id, image, catetypeEpreuveg,title, niveauEpreuve,hallComplexe }
         })} />
         <div className="card-body">
           <div className="row">
@@ -25,18 +25,12 @@ export default function Card({ id, image, catetypeEpreuveg, price, title, niveau
             </div>
             <div className="col col-lg-3">
               <div className="titleVignette">
-                ${price} ({tarifType})
+  
               </div>
             </div>
           </div>
         </div>
-        <button className="btn btn-primary p-2 m-2 activeButton"
-          onClick={() =>
-            dispatch(addToCart({
-              id, title, image, price
-            }))
-          }>Add to Cart
-        </button>
+       
       </div>
     </Wrapper>
   );
@@ -53,10 +47,10 @@ const Wrapper = styled.div`
   .titleVignette {
     font-size: 12px;
     padding: 5px 10px;
-    border: 2px solid red;
+    border: 2px solid black;
     display: inline-block;
     border-radius: 5px;
-    color: blue;
+    color: black;
   }
   .card:hover .activeButton {
     display: block;

@@ -11,7 +11,7 @@ export default function Feature() {
           <div className="col p-4">
             <HiCash size={30} data-testid="cash-icon" /> <span className="mx-3">FAST SECURE PAYMENTS</span> 
           </div>
-          <div className="col bg-danger p-4">
+          <div className="col  p-4">
             <AiFillStar size={30} data-testid="star-icon" />
             <span className="mx-3"> PREMIUM PRODUCTS</span>
           </div>

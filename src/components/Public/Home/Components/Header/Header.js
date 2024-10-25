@@ -42,14 +42,7 @@ export default function Header() {
               Add To Cart
             </button> */}
           </div>
-          <div className="priceHeader ">
-            <div className="priceDiv">
-            From
-            <h1>$30</h1>
-            Shop
-            </div>
           
-          </div>
         </div>
       </div>
      
@@ -60,7 +53,7 @@ export default function Header() {
 <CarouselComp/>
 </div>
 
-<ProductCategories/>
+{/* <ProductCategories/> */}
     </Wrapper>
   );
 }

@@ -1,0 +1,118 @@
+Documentation Technique du Projet "Jeux Olympiques"
+
+Introduction
+Le projet "Jeux Olympiques" est une application de réservation en ligne pour les événements sportifs des Jeux Olympiques. 
+Cette application permet aux utilisateurs de réserver des billets pour différents événements sportifs, de gérer leurs réservations et de consulter 
+les informations sur les épreuves.
+Le projet est basé sur une architecture client-serveur utilisant Spring Boot pour le backend et React pour le frontend.
+Cette documentation décrit les choix techniques, les aspects de sécurité et les perspectives d'évolution du projet.
+
+Maquette/Illustration/Logo/Image
+Figma
+Diagrams.net
+Canva.com
+
+
+Environnement de Travail
+Mac OS (Système d’exploitation)
+DataGrip (IDE pour base de données)
+VSCode (éditeur de texte)
+
+
+
+
+Architecture Générale
+
+Backend - Spring Boot
+Choix de Spring Boot et Spring Security
+
+Justification : Spring Boot est choisi pour sa robustesse, sa rapidité de développement et ses fonctionnalités de sécurité intégrées. 
+Spring Security facilite la gestion des authentifications et des autorisations nécessaires pour la communication avec le frontend React.
+Modèle de Données Personnalisé (User)
+
+Justification : Le modèle utilisateur personnalisé permet d'adapter les champs aux besoins spécifiques (rôles des utilisateurs, informations supplémentaires).
+JWT pour l'Authentification
+
+Justification : Les JSON Web Tokens (JWT) permettent une authentification stateless et sécurisée, adaptée aux applications SPA comme notre frontend React.
+Snap Admin pour l'Interface Graphique
+
+Justification : Snap Admin a été utilisé pour créer une interface graphique permettant de visualiser et de gérer les entités de manière intuitive.
+Cette interface a facilité la matérialisation des entités et a amélioré la compréhension et la gestion des données.
+
+
+
+Frontend - React
+Choix de React
+
+Justification : React est utilisé pour créer des interfaces utilisateur dynamiques et performantes. Sa gestion efficace du DOM virtuel assure une expérience utilisateur fluide.
+Redux pour la Gestion de l'État
+
+Justification : Redux centralise et synchronise l'état global de l'application, essentiel pour gérer les interactions utilisateur et les données (panier d'achat, profils utilisateurs).
+Styled-components pour le Styling
+
+Justification : Styled-components permettent une meilleure modularité et maintenabilité du code CSS, favorisant le développement de composants réutilisables et isolés.
+Résumé des Tests mis en Place
+Backend:
+
+Tests unitaires pour les modèles, services, contrôleurs.
+Tests d'intégration pour les scénarios complets.
+Tests de sécurité pour les permissions et l'authentification.
+Frontend:
+
+Tests unitaires et d'intégration pour les composants et contextes.
+Tests end-to-end pour les parcours utilisateur complets.
+Coverage:
+
+Utilisation de JaCoCo pour le backend.
+Utilisation de Jest pour le frontend.
+Utilisation de Cypress pour les tests end-to-end.
+La mise en place de ces tests et l'utilisation des outils de coverage aideront à garantir la qualité et la robustesse de l'application.
+
+Sécurité
+Authentification et Autorisation
+
+JWT : Utilisation de JWT pour sécuriser les communications entre le client et le serveur.
+Spring Security : Utilisation des permissions de Spring Security pour contrôler l'accès aux différentes ressources de l'API.
+Protection des Données
+
+Hachage des Mots de Passe : Les mots de passe des utilisateurs sont hachés avant d'être stockés dans la base de données.
+HTTPS : Recommandation de l'utilisation de HTTPS pour chiffrer les données en transit.
+Déploiement
+VPS Hosting
+
+Ubuntu (Système d’exploitation)
+Nginx (Reverse Proxy)
+Sécurité
+
+Fail2ban
+UFW (firewall)
+Prévention des Vulnérabilités
+
+Protection CSRF : Mise en place de protections contre les attaques CSRF.
+Validation des Données : Validation stricte des données entrantes pour prévenir les injections SQL et autres attaques.
+Évolutions Futures
+Fonctionnalités
+
+Notifications en Temps Réel : Utilisation de WebSockets pour les notifications en temps réel concernant les mises à jour des événements sportifs.
+Analyse des Données : Intégration d'outils d'analyse pour fournir des insights sur les préférences des utilisateurs et les tendances des achats de billets.
+Scalabilité
+
+Mise en Cache : Utilisation de systèmes de cache (comme Redis) pour améliorer les performances.
+Microservices : Transition vers une architecture de microservices pour faciliter la scalabilité et la maintenance du code.
+Accessibilité et UX
+
+Amélioration de l'Accessibilité : Mise en œuvre des meilleures pratiques pour rendre l'application accessible à tous les utilisateurs.
+Optimisation Mobile : Optimisation de l'application pour une meilleure expérience utilisateur sur les appareils mobiles.
+
+
+
+
+
+Conclusion
+Le projet "Jeux Olympiques" est une application de 
+réservation en ligne robuste et sécurisée, conçue pour offrir une
+ expérience utilisateur fluide et performante. Les choix techniques, les aspects de sécurité et 
+ les perspectives d'évolution décrits dans cette documentation garantissent la qualité et la robustesse 
+ de l'application. L'utilisation de Spring Boot pour le backend et de React pour le frontend, combinée à des outils comme
+ Snap Admin pour l'interface graphique, permet de créer une application moderne et évolutive. Les tests mis en place et les outils de coverage
+assurent une qualité de code élevée et une maintenance facile. Enfin, les évolutions futures prévues, telles que les notifications en temps réel.

@@ -22,28 +22,31 @@ const EpreuvesByCategory = observer(() => {
   if (!Array.isArray(epreuvesByCategoryViewModel.tickets)) {
     return <div>Error: Tickets data is not an array</div>;
   }
-
+  
   return (
     <Wrapper>
       <h1>{category}</h1>
       <div className="tickets-list">
-        {epreuvesByCategoryViewModel.tickets.map(ticket => (
-          <Card
-            key={ticket.id}
-            id={ticket.id}
-            image={ticket.epreuve_sportive.image_url}
-            typeEpreuve={ticket.epreuve_sportive.type_epreuve_sportive}
-            title={ticket.epreuve_sportive.name_epreuve_sportive}
-            niveauEpreuve={ticket.epreuve_sportive.niveau_epreuve}
-            nameComplexe={ticket.complexe_sportif.name_complexe}
-            adressComplexe={ticket.epreuve_sportive.adresse_complexe}
-            hallComplexe={ticket.hall.name}
-            numberPlace={ticket.hall.number_place}
-            heureDebut={ticket.start_time_epreuve}
-            price={ticket.tarifs[0].tarif}  // Assuming there's at least one tariff and using the first one
-            tarifType={ticket.tarifs[0].name_tarif}  // Add this line
-          />
-        ))}
+      {epreuvesByCategoryViewModel.tickets.map((ticket, index) => {
+  // Vérifiez que toutes les propriétés du ticket sont bien définies
+  if (!ticket || !ticket.id || !ticket.imageUrl || !ticket.nameEpreuveSportive || !ticket.typeEpreuveSportive || !ticket.niveauEpreuve || !ticket.hall) {
+    console.error(`Ticket ${index} is invalid:`, ticket);
+    return null; // Ne pas afficher ce ticket s'il manque des données
+  }
+
+  return (
+    <Card
+      key={ticket.id}
+      id={ticket.id}
+      image={ticket.imageUrl}
+      category={ticket.typeEpreuveSportive}  // Corrigé ici
+      title={ticket.nameEpreuveSportive}
+      niveauEpreuve={ticket.niveauEpreuve}
+      hallComplexe={ticket.hall}
+    />
+  );
+})}
+  
       </div>
     </Wrapper>
   );
