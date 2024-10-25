@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-strapi.online/api.jeuxolympiques.com/api';
+
 
 export const loginApi = async (user, authContext) => {
   try {
@@ -9,7 +9,7 @@ export const loginApi = async (user, authContext) => {
 
     console.log('Sending login request with body:', body);
 
-    const response = await fetch(`${API_URL}/token/`, {
+    const response = await fetch('http://localhost:8081/api/epreuves-sportives//token/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

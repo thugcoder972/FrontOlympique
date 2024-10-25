@@ -1,8 +1,8 @@
 
-const API_URL = 'https://backend-strapi.online/api.jeuxolympiques.com/api';
+
 
 export const registerUser = async (userData) => {
-  const response = await fetch(`${API_URL}/register/`, {
+  const response = await fetch('http://localhost:8081/api/epreuves-sportives//register/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

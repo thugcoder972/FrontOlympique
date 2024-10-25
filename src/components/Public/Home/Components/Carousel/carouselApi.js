@@ -1,6 +1,6 @@
 // src/components/Carousel/api/carouselApi.js
 
-const API_URL = 'https://backend-strapi.online/api.jeuxolympiques.com/api';
+
 
 export async function getCategories() {
     return [
@@ -26,7 +26,7 @@ export async function getCategories() {
 
 
 export const getTicketsByLevel = async (niveau) => {
-    const response = await fetch(`${API_URL}/epreuves/by_level/?niveau_epreuve=${niveau}`);
+    const response = await fetch(`http://localhost:8081/api/epreuves-sportives/epreuves/by_level/?niveau_epreuve=${niveau}`);
     if (!response.ok) {
         throw new Error('Failed to fetch tickets by level');
     }
