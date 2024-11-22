@@ -1,71 +1,58 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Frontend - FrontOlympique
+
+## Description
+Ce projet représente le frontend d'une application de billetterie pour les Jeux Olympiques, développé avec React. Il permet aux utilisateurs de s'inscrire, se connecter, acheter des billets, et recevoir un e-ticket sous forme de QR code.
+
+## Fonctionnalités principales
+- Page d'accueil avec présentation des offres
+- Authentification des utilisateurs avec gestion de session via JWT
+- Ajout de billets au panier et gestion du paiement (mock de paiement)
+- Réception d'un QR code comme e-ticket après l'achat
+- Interface d'administration pour gérer les offres et les statistiques de ventes
+
+## Technologies utilisées
+- **Frontend** : React, Redux, React Router
+- **Gestion de l'état** : Redux
+- **Styling** : Styled-components
+
+## Prérequis
+- Node.js (version 14 ou supérieure)
+- npm ou yarn
+
+## Installation
+1. Clonez le projet :
+   ```bash
+   git clone https://github.com/thugcoder972/FrontOlympique.git
+   cd FrontOlympique
+Installez les dépendances avec npm ou yarn :
+
+npm install
+ou
+
+yarn install
+Lancez le serveur de développement :
+
+npm start
+L'application sera accessible sur http://localhost:3000.
+
+Structure des dossiers
+src/components/ : Composants réutilisables de l'interface.
+src/pages/ : Pages principales (Page d'accueil, Connexion, Inscription, etc.).
+src/redux/ : Gestion de l'état avec Redux (actions, reducers).
+src/styles/ : Styles avec Styled-components.
+Routes principales
+/ : Page d'accueil avec présentation des épreuves.
+/login : Page de connexion pour les utilisateurs.
+/signup : Page d'inscription pour les nouveaux utilisateurs.
+/cart : Page du panier pour l'achat de billets.
+/admin : Espace administrateur pour gérer les offres et consulter les statistiques de ventes.
+Sécurité
+Utilisation de JWT pour l'authentification et la gestion des sessions.
+Stockage sécurisé du token JWT dans le stockage local du navigateur.
+Mise en place de la protection contre les attaques XSS.
+Auteurs
+Terry Marie-Sainte
