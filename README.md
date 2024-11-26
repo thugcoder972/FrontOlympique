@@ -44,15 +44,23 @@ src/components/ : Composants réutilisables de l'interface.
 src/pages/ : Pages principales (Page d'accueil, Connexion, Inscription, etc.).
 src/redux/ : Gestion de l'état avec Redux (actions, reducers).
 src/styles/ : Styles avec Styled-components.
+
+
 Routes principales
 / : Page d'accueil avec présentation des épreuves.
 /login : Page de connexion pour les utilisateurs.
 /signup : Page d'inscription pour les nouveaux utilisateurs.
 /cart : Page du panier pour l'achat de billets.
 /admin : Espace administrateur pour gérer les offres et consulter les statistiques de ventes.
+
+
+
 Sécurité
 Utilisation de JWT pour l'authentification et la gestion des sessions.
 Stockage sécurisé du token JWT dans le stockage local du navigateur.
 Mise en place de la protection contre les attaques XSS.
+
+
+
 Auteurs
 Terry Marie-Sainte
