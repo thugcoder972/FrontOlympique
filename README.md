@@ -36,6 +36,9 @@ ou
 yarn install
 Lancez le serveur de développement :
 
+
+
+
 npm start
 L'application sera accessible sur http://localhost:3000.
 
@@ -46,12 +49,25 @@ src/redux/ : Gestion de l'état avec Redux (actions, reducers).
 src/styles/ : Styles avec Styled-components.
 
 
+
+
+
+
+
+
+
+
+
 Routes principales
 / : Page d'accueil avec présentation des épreuves.
 /login : Page de connexion pour les utilisateurs.
 /signup : Page d'inscription pour les nouveaux utilisateurs.
 /cart : Page du panier pour l'achat de billets.
 /admin : Espace administrateur pour gérer les offres et consulter les statistiques de ventes.
+
+
+
+
 
 
 
