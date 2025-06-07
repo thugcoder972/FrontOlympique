@@ -1,17 +1,15 @@
 // cartApi.js
 export async function createAchat(token, item, userId) {
-  const response = await fetch('https://backend-strapi.online/api.jeuxolympiques.com/api/achats/', {
+  const response = await fetch('http://localhost:8081/api/achats/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-          ticket: item.id,
-          nombre_tickets: item.quantity,
-          prix_ticket: item.price,
-          prix_total: item.price * item.quantity,
-          user_acheteur: userId
+          user: userId,
+          ticketIds: [item.id],
+          dateAchat: new Date().toISOString()
       })
   });
 

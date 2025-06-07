@@ -9,8 +9,8 @@ const Confirmation = () => {
 
   return (
     <Wrapper>
-      <Header>Thank you for your purchase!</Header>
-      <Message>Your order has been confirmed.</Message>
+      <Header>Merci pour votre achat </Header>
+      <Message>votre commande est bien confirmé vous pouvez voir votre historique d'achat dans le dashboard.</Message>
       <SectionTitle>Order Summary</SectionTitle>
       <OrderList>
         {cart.map((item, index) => (
