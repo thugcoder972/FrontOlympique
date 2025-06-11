@@ -1,144 +1,166 @@
-// src/components/Public/Register/Register.js
-
-import React from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 import { observer } from "mobx-react-lite";
-import { useDependencies } from '../../../DependencyContext';
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ Utilisé pour la navigation
+import RegisterViewModel from './RegisterViewModel';
+import styled from 'styled-components';
 
-const RegisterView = observer(() => {
-  const { registerViewModel } = useDependencies();
-  const navigate = useNavigate();
+// --- Composants stylisés ---
+const FormContainer = styled.div`
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+`;
 
-  const handleSubmit = (e) => {
-    registerViewModel.handleRegister(e, navigate);
-  };
-
-  return (
-    <Wrapper>
-      <Form onSubmit={handleSubmit}>
-        <Header>Register</Header>
-        {registerViewModel.errorMessage && <ErrorMessage>{registerViewModel.errorMessage}</ErrorMessage>}
-        <FormField>
-          <input
-            type="text"
-            value={registerViewModel.username}
-            onChange={(e) => registerViewModel.handleChange('username', e.target.value)}
-            placeholder="Username"
-            required
-          />
-        </FormField>
-        <FormField>
-          <input
-            type="email"
-            value={registerViewModel.email}
-            onChange={(e) => registerViewModel.handleChange('email', e.target.value)}
-            placeholder="Email"
-            required
-          />
-        </FormField>
-        <FormField>
-          <input
-            type="password"
-            value={registerViewModel.password}
-            onChange={(e) => registerViewModel.handleChange('password', e.target.value)}
-            placeholder="Password"
-            required
-          />
-        </FormField>
-        <FormField>
-          <input
-            type="tel"
-            value={registerViewModel.tel}
-            onChange={(e) => registerViewModel.handleChange('tel', e.target.value)}
-            placeholder="Telephone"
-          />
-        </FormField>
-        <FormField>
-          <select value={registerViewModel.type} onChange={(e) => registerViewModel.handleChange('type', e.target.value)}>
-            <option value="acheteur">Acheteur</option>
-            <option value="autre">Autre</option>
-          </select>
-        </FormField>
-        <SubmitButton type="submit">Register</SubmitButton>
-        <LoginLink>
-          Already have an account? <NavLink to="/login">Login</NavLink>
-        </LoginLink>
-      </Form>
-    </Wrapper>
-  );
-});
-
-const Wrapper = styled.div`
-  background-color: #808080;
-  min-height: 100vh;
-  padding: 20px;
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 1rem;
 `;
 
-const Form = styled.form`
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-`;
+const StyledInput = styled.input`
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
 
-const Header = styled.h1`
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 20px;
-`;
-
-const FormField = styled.div`
-  margin-bottom: 20px;
-
-  input,
-  select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border-color: #646cff;
   }
+`;
+
+const StyledSelect = styled.select`
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
 `;
 
 const SubmitButton = styled.button`
-  background-color: #44545c;
-  color: #ffffff;
-  padding: 10px 20px;
+  padding: 1rem;
+  background: #646cff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 1em;
-  
+  transition: background 0.3s;
+
   &:hover {
-    background-color: #70acac;
+    background: #535bf2;
+  }
+
+  &:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
   }
 `;
 
-const LoginLink = styled.p`
-  margin-top: 20px;
-  font-size: 1em;
-  color: #333;
-
-  a {
-    color: #70acac;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+const ErrorMessage = styled.div`
+  color: #ff3333;
+  padding: 0.5rem;
+  background: #ffeeee;
+  border-radius: 4px;
+  margin-bottom: 1rem;
 `;
 
-const ErrorMessage = styled.p`
-  color: red;
-  margin-bottom: 20px;
-`;
+// --- Composant principal ---
+const RegisterView = observer(() => {
+    console.log("[RENDER] RegisterView component rendering"); // [DEBUG]
+
+    const navigate = useNavigate(); // ✅ Hook react-router
+    const registerViewModel = useMemo(() => {
+        console.log("[INIT] Creating new RegisterViewModel instance"); // [DEBUG]
+        return new RegisterViewModel();
+    }, []);
+
+    return (
+        <FormContainer>
+            <StyledForm onSubmit={(e) => {
+                console.log("[EVENT] Form submit triggered"); // [DEBUG]
+                registerViewModel.handleRegister(e, navigate);
+            }}>
+                <h2>Inscription</h2>
+
+                {registerViewModel.errorMessage && (
+                    <ErrorMessage>
+                        {registerViewModel.errorMessage}
+                        {console.log("[ERROR] Displaying error:", registerViewModel.errorMessage)} // [DEBUG]
+                    </ErrorMessage>
+                )}
+
+                <StyledInput
+                    value={registerViewModel.username}
+                    onChange={(e) => {
+                        console.log("[INPUT] Username changed:", e.target.value); // [DEBUG]
+                        registerViewModel.handleChange('username', e.target.value);
+                    }}
+                    placeholder="Nom d'utilisateur *"
+                    required
+                    onBlur={() => console.log("[FOCUS] Username field blurred")} // [DEBUG]
+                />
+
+                <StyledInput
+                    type="email"
+                    value={registerViewModel.email}
+                    onChange={(e) => {
+                        console.log("[INPUT] Email changed:", e.target.value); // [DEBUG]
+                        registerViewModel.handleChange('email', e.target.value);
+                    }}
+                    placeholder="Email"
+                    onBlur={() => console.log("[FOCUS] Email field blurred")} // [DEBUG]
+                />
+
+                <StyledInput
+                    type="password"
+                    value={registerViewModel.password}
+                    onChange={(e) => {
+                        console.log("[INPUT] Password changed:", e.target.value); // [DEBUG]
+                        registerViewModel.handleChange('password', e.target.value);
+                    }}
+                    placeholder="Mot de passe * (6 caractères minimum)"
+                    minLength="6"
+                    required
+                    onBlur={() => console.log("[FOCUS] Password field blurred")} // [DEBUG]
+                />
+
+                <StyledInput
+                    type="tel"
+                    value={registerViewModel.tel}
+                    onChange={(e) => {
+                        console.log("[INPUT] Telephone changed:", e.target.value); // [DEBUG]
+                        registerViewModel.handleChange('tel', e.target.value);
+                    }}
+                    placeholder="Téléphone"
+                    onBlur={() => console.log("[FOCUS] Telephone field blurred")} // [DEBUG]
+                />
+
+                <StyledSelect
+                    value={registerViewModel.type}
+                    onChange={(e) => {
+                        console.log("[SELECT] User type changed:", e.target.value); // [DEBUG]
+                        registerViewModel.handleChange('type', e.target.value);
+                    }}
+                    onBlur={() => console.log("[FOCUS] Type select blurred")} // [DEBUG]
+                >
+                    <option value="acheteur">Acheteur</option>
+                    <option value="vendeur">Vendeur</option>
+                </StyledSelect>
+
+                <SubmitButton
+                    type="submit"
+                    disabled={registerViewModel.isLoading}
+                    onClick={() => console.log("[CLICK] Submit button clicked")}
+                >
+                    {registerViewModel.isLoading ? 'Inscription en cours...' : "S'inscrire"}
+                    {console.log("[STATE] Loading state:", registerViewModel.isLoading)} // [DEBUG]
+                </SubmitButton>
+            </StyledForm>
+        </FormContainer>
+    );
+});
 
 export default RegisterView;
