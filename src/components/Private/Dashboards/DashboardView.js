@@ -41,7 +41,7 @@ const DashboardView = observer(() => {
           });
           return (
             <div key={index} className="achat-item" style={{ backgroundColor: color }}>
-              <img src="https://cdn.pixabay.com/photo/2016/07/22/16/39/olympia-1535220_1280.png" alt="Olympic Logo" className="olympic-logo" />
+              <img src="https://cdn.pixabay.com/photo/2012/04/24/18/14/handball-40768_1280.png" alt="Olympic Logo" className="olympic-logo" />
               <h2>Ticket des Jeux Olympiques</h2>
               <p><strong>Epreuve:</strong> {ticketDetails.epreuve_sportive?.name_epreuve_sportive || 'N/A'}</p>
               <p><strong>Niveau:</strong> {ticketDetails.epreuve_sportive?.niveau_epreuve || 'N/A'}</p>
