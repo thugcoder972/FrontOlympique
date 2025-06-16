@@ -31,24 +31,25 @@ const DashboardView = observer(() => {
       <SectionTitle>Tickets achetés</SectionTitle>
       <div className="achats-list">
         {dashboardViewModel.achats.map((achat, index) => {
-          const ticketDetails = dashboardViewModel.getTicketDetails(achat.id.ticket);
-          console.log("ticketDetails", ticketDetails);
+          const ticketDetails = dashboardViewModel.getTicketDetails(achat.ticket);
           const color = colors[index % colors.length];
+
           const qrCodeData = JSON.stringify({
             ticketId: achat.ticket,
             userId: achat.user_acheteur,
             purchaseId: achat.id,
           });
+
           return (
-            <div key={index} className="achat-item" style={{ backgroundColor: color }}>
+            <div key={achat.id} className="achat-item" style={{ backgroundColor: color }}>
               <img src="https://cdn.pixabay.com/photo/2012/04/24/18/14/handball-40768_1280.png" alt="Olympic Logo" className="olympic-logo" />
               <h2>Ticket des Jeux Olympiques</h2>
-              <p><strong>Epreuve:</strong> {ticketDetails.epreuve_sportive?.name_epreuve_sportive || 'N/A'}</p>
+              <p><strong>Épreuve:</strong> {ticketDetails.epreuve_sportive?.name_epreuve_sportive || 'N/A'}</p>
               <p><strong>Niveau:</strong> {ticketDetails.epreuve_sportive?.niveau_epreuve || 'N/A'}</p>
               <p><strong>Complexe:</strong> {ticketDetails.complexe_sportif?.name_complexe || 'N/A'}</p>
               <p><strong>Tarif:</strong> {ticketDetails.tarifs?.[0]?.name_tarif || 'N/A'}</p>
-              <p><strong>Nombre de tickets:</strong> {achat.id.nombre_tickets}</p>
-              <p><strong>Prix total:</strong> ${achat.id.prix_total}</p>
+              <p><strong>Nombre de tickets:</strong> {achat.nombre_tickets}</p>
+              <p><strong>Prix total:</strong> ${achat.prix_total}</p>
               <QRCodeCanvas value={qrCodeData} size={128} />
             </div>
           );
@@ -71,7 +72,7 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
   }
 
   .achat-item {
@@ -82,7 +83,7 @@ const Wrapper = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
     position: relative;
-    
+
     &:hover {
       transform: translateY(-5px);
     }

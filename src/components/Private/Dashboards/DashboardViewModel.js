@@ -72,7 +72,6 @@
 //     }
 // }
 
-// export default DashboardViewModel;
 import { makeAutoObservable, runInAction } from "mobx";
 import { Achat } from "../../../models/AchatModel";
 import { Ticket } from "../../../models/TicketModel";
@@ -128,7 +127,7 @@ class DashboardViewModel {
             this.setLoading(true);
             this.clearError();
 
-            // 1. Chargement des achats
+            // 1. Récupération des achats
             const achatsData = await this.fetchUserAchats(this.user.token);
             console.debug("Achats chargés:", achatsData);
 
@@ -140,17 +139,28 @@ class DashboardViewModel {
                 return;
             }
 
-            // 2. Extraction des tickets
-            const ticketIds = this.extractTicketIds(achatsData);
-            let tickets = [];
+            // 2. Extraire les IDs des tickets
+            const ticketIds = achatsData
+                .map(achat => achat.ticket)
+                .filter(Boolean);
 
+            let tickets = [];
             if (ticketIds.length > 0) {
                 tickets = await this.loadTickets(ticketIds);
             }
 
             // 3. Mise à jour du state
             runInAction(() => {
-                this.achats = achatsData.map(a => new Achat(a));
+                this.achats = achatsData.map(a => new Achat(
+                    a.id,
+                    a.ticket,
+                    a.nombre_tickets,
+                    a.prix_ticket,
+                    a.prix_total,
+                    a.date_achat,
+                    a.user_acheteur,
+                    a.qr_code
+                ));
                 this.tickets = tickets;
             });
 
@@ -164,7 +174,7 @@ class DashboardViewModel {
     async loadTickets(ticketIds) {
         try {
             const ticketsData = await this.fetchTicketDetails(
-                this.user.token, 
+                this.user.token,
                 ticketIds.join(',')
             );
             return ticketsData.map(t => new Ticket(t));
@@ -174,28 +184,27 @@ class DashboardViewModel {
         }
     }
 
-    extractTicketIds(achatsData) {
-        return achatsData
-            .flatMap(achat => achat.tickets || [])
-            .map(ticket => ticket?.id)
-            .filter(Boolean); // Filtre les IDs null/undefined
-    }
-
     getTicketDetails(ticketId) {
         return this.tickets.find(t => t.id === ticketId) || {};
     }
 
     // Helpers
     setLoading(state) {
-        runInAction(() => this.loading = state);
+        runInAction(() => {
+            this.loading = state;
+        });
     }
 
     setError(message) {
-        runInAction(() => this.error = message);
+        runInAction(() => {
+            this.error = message;
+        });
     }
 
     clearError() {
-        runInAction(() => this.error = null);
+        runInAction(() => {
+            this.error = null;
+        });
     }
 }
 
