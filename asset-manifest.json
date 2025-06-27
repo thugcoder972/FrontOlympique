@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/FrontOlympique/static/css/main.f6dcfcef.css",
-    "main.js": "/FrontOlympique/static/js/main.ba8fde0f.js",
-    "static/js/787.1de174c0.chunk.js": "/FrontOlympique/static/js/787.1de174c0.chunk.js",
-    "static/media/mode1.jpg": "/FrontOlympique/static/media/mode1.283171bbb2c091ed58d5.jpg",
-    "static/media/model2.jpg": "/FrontOlympique/static/media/model2.24b24fd6b6d58cb28d99.jpg",
-    "static/media/revicons.eot": "/FrontOlympique/static/media/revicons.a77de540a38981833f9e.eot",
-    "static/media/revicons.ttf": "/FrontOlympique/static/media/revicons.57fd05d4ae650374c8de.ttf",
-    "static/media/revicons.woff": "/FrontOlympique/static/media/revicons.e8746a624ed098489406.woff",
-    "index.html": "/FrontOlympique/index.html",
-    "main.f6dcfcef.css.map": "/FrontOlympique/static/css/main.f6dcfcef.css.map",
-    "main.ba8fde0f.js.map": "/FrontOlympique/static/js/main.ba8fde0f.js.map",
-    "787.1de174c0.chunk.js.map": "/FrontOlympique/static/js/787.1de174c0.chunk.js.map"
+    "main.css": "/static/css/main.e7ab52ce.css",
+    "main.js": "/static/js/main.86e3cb24.js",
+    "static/js/787.1de174c0.chunk.js": "/static/js/787.1de174c0.chunk.js",
+    "static/media/mode1.jpg": "/static/media/mode1.283171bbb2c091ed58d5.jpg",
+    "static/media/model2.jpg": "/static/media/model2.24b24fd6b6d58cb28d99.jpg",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.e7ab52ce.css.map": "/static/css/main.e7ab52ce.css.map",
+    "main.86e3cb24.js.map": "/static/js/main.86e3cb24.js.map",
+    "787.1de174c0.chunk.js.map": "/static/js/787.1de174c0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f6dcfcef.css",
-    "static/js/main.ba8fde0f.js"
+    "static/css/main.e7ab52ce.css",
+    "static/js/main.86e3cb24.js"
   ]
 }
