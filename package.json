@@ -34,13 +34,13 @@
     "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
-  "homepage": ".",
+  "homepage": "https://thugcoder972.github.io/FrontOlympique",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "yarn build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "jest": {
@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^8.0.1",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.3.0",
     "jest": "^29.7.0",
     "redux-mock-store": "^1.5.4"
   }

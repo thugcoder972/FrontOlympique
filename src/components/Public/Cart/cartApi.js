@@ -1,6 +1,6 @@
 // cartApi.js
 export async function createAchat(token, item, userId) {
-  const response = await fetch('http://localhost:8081/api/achats/', {
+  const response = await fetch('http://31.97.142.99:8081/api/achats/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

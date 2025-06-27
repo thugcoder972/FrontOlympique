@@ -28,7 +28,7 @@ const AppRoutes = () => {
   return (
     <DependencyProvider user={user}>
       <Routes>
-        <Route path="/*" element={<PublicRoute />} />
+        <Route path="/" element={<PublicRoute />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<DashboardView />} />
           <Route path="/profile" element={<ProfileView />} />

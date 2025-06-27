@@ -9,7 +9,7 @@ export const registerUser = async (userData) => {
       throw new Error("Le nom d'utilisateur et le mot de passe sont requis");
     }
 
-    const response = await fetch('http://localhost:8081/api/register', {
+    const response = await fetch('http://31.97.142.99:8081/api/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

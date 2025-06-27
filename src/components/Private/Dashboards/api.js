@@ -1,6 +1,6 @@
 
 export async function createAchat(token, achatData) {
-  const response = await fetch('http://localhost:8081/api/achats', {
+  const response = await fetch('http://31.97.142.99:8081/api/achats', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,8 +20,8 @@ export async function fetchUserAchats(token, userId = null) {
 
     // Construire l'URL en fonction des paramètres
     const url = userId 
-        ? `http://localhost:8081/api/achats/by-user?userId=${userId}`
-        : 'http://localhost:8081/api/achats/by-user';
+        ? `http://31.97.142.99:8081/api/achats/by-user?userId=${userId}`
+        : 'http://31.97.142.99:8081/api/achats/by-user';
 
     const response = await fetch(url, {
         headers: {
@@ -36,7 +36,7 @@ export async function fetchUserAchats(token, userId = null) {
 }
 
 export async function fetchTicketDetails(token, ticketIds) {
-    const response = await fetch(`http://localhost:8081/api/tickets/ticket-details/${ticketIds}`, {
+    const response = await fetch(`http://31.97.142.99:8081/api/tickets/ticket-details/${ticketIds}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

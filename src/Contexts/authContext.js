@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   // 3. Login avec gestion d'erreur améliorée
   const login = async (username, password) => {
     try {
-      const response = await axios.post('http://localhost:8081/api/login', {
+      const response = await axios.post('http://31.97.142.99:8081/api/login', {
         username,
         password
       });
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   const refreshToken = async () => {
     try {
       const refreshToken = localStorage.getItem('refresh_token');
-      const response = await axios.post('http://localhost:8081/api/refresh', {
+      const response = await axios.post('http://31.97.142.99:8081/api/refresh', {
         refreshToken
       });
       setAuthTokens(response.data.token, response.data.refreshToken);

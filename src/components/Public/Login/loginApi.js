@@ -13,7 +13,7 @@ export const loginApi = async (user, authContext) => {
     console.log('Sending login request for user:', user.username);
 
     // Correction du double slash dans l'URL
-    const response = await fetch('http://localhost:8081/api/epreuves-sportives/token/', {
+    const response = await fetch('http://31.97.142.99:8081/api/epreuves-sportives/token/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
