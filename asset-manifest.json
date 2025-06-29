@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FrontOlympique/static/css/main.f6dcfcef.css",
-    "main.js": "/FrontOlympique/static/js/main.6b354cc4.js",
+    "main.js": "/FrontOlympique/static/js/main.bcbde43f.js",
     "static/js/787.1de174c0.chunk.js": "/FrontOlympique/static/js/787.1de174c0.chunk.js",
     "static/media/mode1.jpg": "/FrontOlympique/static/media/mode1.283171bbb2c091ed58d5.jpg",
     "static/media/model2.jpg": "/FrontOlympique/static/media/model2.24b24fd6b6d58cb28d99.jpg",
@@ -10,11 +10,11 @@
     "static/media/revicons.woff": "/FrontOlympique/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/FrontOlympique/index.html",
     "main.f6dcfcef.css.map": "/FrontOlympique/static/css/main.f6dcfcef.css.map",
-    "main.6b354cc4.js.map": "/FrontOlympique/static/js/main.6b354cc4.js.map",
+    "main.bcbde43f.js.map": "/FrontOlympique/static/js/main.bcbde43f.js.map",
     "787.1de174c0.chunk.js.map": "/FrontOlympique/static/js/787.1de174c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f6dcfcef.css",
-    "static/js/main.6b354cc4.js"
+    "static/js/main.bcbde43f.js"
   ]
 }
