@@ -1,6 +1,6 @@
 // cartApi.js
 export async function createAchat(token, item, userId) {
-  const response = await fetch('http://31.97.142.99:8081/api/achats/', {
+  const response = await fetch('https://srv881328.hstgr.cloud/api/achats/', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

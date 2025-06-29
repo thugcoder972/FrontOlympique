@@ -1,6 +1,6 @@
 // src/components/Private/Profile/api.js
 
-const BASE_URL = 'http://31.97.142.99:8081/api';
+const BASE_URL = 'https://srv881328.hstgr.cloud/api';
 
 export async function fetchUserProfile(token) {
   const response = await fetch(`${BASE_URL}/user-profile/`, {
