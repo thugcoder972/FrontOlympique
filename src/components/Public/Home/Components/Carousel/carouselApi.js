@@ -17,7 +17,7 @@ export async function getCategories() {
 
   }
   export const getTicketsByCategory = async (category) => {
-    const response = await fetch(`http://31.97.142.99:8081/api/epreuves-sportives/filter-by-type?type=${category}`);  
+    const response = await fetch(`https://srv881328.hstgr.cloud/api/epreuves-sportives/filter-by-type?type=${category}`);  
     if (!response.ok) {
         throw new Error('Failed to fetch tickets by category');
     }
@@ -26,7 +26,7 @@ export async function getCategories() {
 
 
 export const getTicketsByLevel = async (niveau) => {
-    const response = await fetch(`http://31.97.142.99:8081/api/epreuves-sportives/epreuves/by_level/?niveau_epreuve=${niveau}`);
+    const response = await fetch(`https://srv881328.hstgr.cloud/api/epreuves-sportives/epreuves/by_level/?niveau_epreuve=${niveau}`);
     if (!response.ok) {
         throw new Error('Failed to fetch tickets by level');
     }
